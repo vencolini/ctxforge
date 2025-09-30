@@ -36,4 +36,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support for Claude Code, Gemini CLI, ChatGPT, and any LLM
 - Language and framework agnostic
 
-[1.0.0]: https://github.com/YOUR_USERNAME/ctxforge/releases/tag/v1.0.0
+[1.0.0]: https://github.com/vencolini/ctxforge/releases/tag/v1.0.0

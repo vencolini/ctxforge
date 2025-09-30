@@ -66,30 +66,18 @@ For each atomic task:
 
 **Output:** Working code with maintained context
 
-## Installation
+## Getting Started
+
+Now that ctxforge is installed in your project, follow these steps:
 
 ```bash
-# Install globally
-npm install -g ctxforge
-
-# Or use with npx (no installation required)
-npx ctxforge init
-```
-
-## Quick Start
-
-```bash
-# 1. Navigate to your project
-cd your-project
-
-# 2. Initialize ctxforge
-npx ctxforge init
-
-# 3. Start with your LLM
+# Start with your LLM assistant
 claude-code --file docs/context/llm-instructions.md
 # or
 gemini-cli --context docs/context/llm-instructions.md
 ```
+
+**First time?** Read `quick-start.md` for a 5-minute walkthrough.
 
 ### For Humans
 
@@ -202,6 +190,16 @@ your-project/
 - **Quality improves:** Pitfalls prevented across team
 - **Handoffs smooth:** State snapshots enable continuation
 
+## Important: LLM Quality Dependency
+
+⚠️ **This framework works non-deterministically** and depends heavily on your LLM's capabilities:
+
+- **High-quality LLMs** (Claude 3.5+, GPT-4+, Gemini Pro, etc.) will follow instructions consistently and produce excellent results
+- **Lower-quality models** may ignore directives, skip steps, or produce inconsistent output
+- **Your mileage will vary** based on the specific LLM and version you're using
+
+**Best results with**: Claude Code, advanced ChatGPT, Gemini CLI, or other high-capability LLM interfaces.
+
 ## Compatibility
 
 ### LLM Tools Supported
@@ -275,7 +273,7 @@ This is a living framework. Improve it based on your experience:
 ## Version
 
 **Framework Version:** 1.0  
-**Last Updated:** 2025-01-15  
+**Last Updated:** 2025-09-30
 **Compatibility:** Universal (any LLM, any project)
 
 ## License
