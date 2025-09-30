@@ -1,6 +1,6 @@
 {
   "name": "ctxforge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Context Engineering Framework for LLM-Assisted Development",
   "main": "index.js",
   "bin": {
