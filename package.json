@@ -1,0 +1,44 @@
+{
+  "name": "ctxforge",
+  "version": "1.0.0",
+  "description": "Context Engineering Framework for LLM-Assisted Development",
+  "main": "index.js",
+  "bin": {
+    "ctxforge": "bin/ctxforge.js"
+  },
+  "scripts": {
+    "test": "node bin/ctxforge.js init --test"
+  },
+  "keywords": [
+    "llm",
+    "ai",
+    "context",
+    "claude",
+    "gemini",
+    "chatgpt",
+    "development",
+    "framework",
+    "context-engineering",
+    "ai-assisted-coding"
+  ],
+  "author": "Ventsislav Petrov - LLM coders",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vencolini/ctxforge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vencolini/ctxforge/issues"
+  },
+  "homepage": "https://github.com/vencolini/ctxforge#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "bin/",
+    "docs/",
+    "templates/",
+    "README.md",
+    "LICENSE"
+  ]
+}

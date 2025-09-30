@@ -1,0 +1,12 @@
+# Personal files (not part of distribution)
+action-plan.md
+testing-guide.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+.history/
