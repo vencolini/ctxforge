@@ -1,106 +1,112 @@
 # ctxforge
 
-> **Stop debugging AI code. Start shipping features.**
+> **Context Engineering Framework for LLM-Assisted Development**
 
 [![npm version](https://badge.fury.io/js/ctxforge.svg)](https://www.npmjs.com/package/ctxforge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## What is ctxforge?
 
-ctxforge transforms **any AI coding assistant** into a senior developer that understands your project, follows your patterns, and writes production-ready code from day one.
+ctxforge provides structured context and engineering standards to AI coding assistants, enabling them to understand your project architecture, follow established patterns, and generate production-quality code that integrates seamlessly with existing codebases.
 
-## 30-Second Demo
+## The Challenge
 
-**Without ctxforge:**
-```bash
-You: "Add search functionality"
-AI: [Immediately writes code with poor performance, missing validation, wrong patterns]
-You: [Spend 2 hours debugging and fixing O(n²) algorithms, missing edge cases]
-```
+Modern AI coding assistants excel at generating code quickly but often lack project context, leading to:
 
-**With ctxforge:**
-```bash
-You: "Add search functionality"  
-AI: "I see you have 1,200 products. I'll implement:
-     • Client-side filtering (fast for this data size)
-     • 300ms debouncing (matches your existing input patterns) 
-     • Accessible keyboard navigation (per your project standards)
-     Proceeding with optimized implementation..."
-You: [Perfect code, zero debugging needed]
-```
+- **Inconsistent patterns** that don't match existing codebase conventions
+- **Performance oversights** like inefficient algorithms or memory management issues  
+- **Integration gaps** where new code doesn't align with established architecture
+- **Quality variance** across different development sessions
 
-## The Problem AI Coding Solves (And Creates)
+ctxforge addresses these issues by providing AI with comprehensive project understanding and engineering standards.
 
-✅ **Solves:** Writing code 10x faster  
-❌ **Creates:** Debugging AI code takes longer than writing it yourself
-
-**Why?** AI lacks your project context, makes wrong assumptions, ignores best practices.
-
-## Try It Now (2 minutes)
+## Installation
 
 ```bash
-# Step 1: Run this in any project directory
+# Option 1: Use directly (no installation needed)
 npx ctxforge guided
 
-# Step 2: Start your AI tool (Claude, Cursor, ChatGPT, etc.)
-# That's it! Your AI now has full project context
+# Option 2: Install globally
+npm install -g ctxforge
+ctxforge guided
+
+# Option 3: Install in project
+npm install ctxforge
+npx ctxforge guided
 ```
 
-### What just happened?
-- 🎯 **Auto-detected** your project type (React, Node.js, Python, etc.)
-- 📋 **Created context files** that any AI can read
-- ⚡ **Applied performance standards** automatically
-- 🧠 **Gave AI your project knowledge** instantly
+## Quick Start (3 steps)
 
-### Result: AI writes code like it knows your codebase
+### Step 1: Initialize (30 seconds)
+```bash
+cd your-project
+npx ctxforge guided
+```
+**What happens:** Creates `CONTEXT.md` with your project info and `CLAUDE.md` (or AGENTS.md) for AI integration.
 
-## Core Features
+### Step 2: Test with AI (1 minute)
+Start your AI tool (Claude Code, Cursor, etc.) - it now reads your project context automatically.
 
-🎯 **Smart Context Discovery** - `npx ctxforge spec "users need search"` → AI generates full specifications  
-⚡ **Auto Performance** - O(n) complexity enforced, memory leaks prevented automatically  
-🧠 **Persistent Memory** - AI remembers your project across sessions  
-🔧 **Any Language/Framework** - React, Python, Go, Rust... works with everything  
-🤖 **Universal AI Support** - Claude, Cursor, ChatGPT, Gemini - any AI tool
+**Try this:** Ask AI to "add input validation to the login form"
+- **Before ctxforge:** AI guesses, writes generic code
+- **With ctxforge:** AI knows your validation patterns, error handling, and UI components
 
-## Real Example: React Search Component
+### Step 3: Generate specifications (30 seconds)
+```bash
+npx ctxforge spec "users need to filter products by category"
+```
+**What happens:** AI analyzes your request and creates a detailed behavioral specification in `docs/context/behavioral-specs/`
 
-**Without ctxforge** (typical AI response):
+## Framework Components
+
+### Generated Files
+- **`CONTEXT.md`** - Central project knowledge base containing architecture, patterns, and standards
+- **`CLAUDE.md` / `AGENTS.md`** - AI tool integration files for seamless context loading  
+- **`docs/context/`** - Performance directives, behavioral specifications, and domain expertise
+
+### Engineering Standards Applied
+- **Algorithmic efficiency** with documented time complexity requirements
+- **Memory management** patterns including cleanup and leak prevention
+- **Accessibility compliance** with semantic HTML and keyboard navigation
+- **Security practices** for input validation and data handling
+
+### Language and Framework Support
+Compatible with JavaScript, Python, Go, Rust, Java, C# and frameworks including React, Vue, Django, Rails, Express, FastAPI. Integrates with Claude Code, Cursor, ChatGPT, Gemini CLI, and other AI development tools.
+
+## Implementation Example
+
+Consider a typical request: "Add search functionality to the product catalog."
+
+### Standard AI Response
 ```javascript
-// AI generates this immediately - looks good but has issues
 function SearchComponent() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   
   useEffect(() => {
-    // 🚨 Bug: No debouncing - hammers API on every keystroke
-    // 🚨 Bug: O(n²) if used with large datasets  
-    // 🚨 Bug: Memory leak - no cleanup
+    // Issues: No debouncing, potential memory leaks, unoptimized API calls
     fetch(`/search?q=${query}`)
       .then(res => res.json())
       .then(setResults);
   }, [query]);
   
-  return <div>{/* basic rendering */}</div>;
+  return <div>{/* basic implementation */}</div>;
 }
 ```
 
-**With ctxforge** (context-aware AI):
+### Context-Aware Implementation
 ```javascript
-// AI analyzes your project and generates optimized code
 function SearchComponent({ products }) {
   const [query, setQuery] = useState('');
   
-  // ✅ AI knows: "1,200 items = client-side filtering optimal"
-  // ✅ AI applies: O(n) complexity with memoization  
-  // ✅ AI follows: Your project's 300ms debounce pattern
+  // Applies project-specific patterns and performance standards
   const filteredProducts = useMemo(() => {
     if (query.length < 2) return products;
     return products.filter(p => 
       p.name.toLowerCase().includes(query.toLowerCase())
     );
-  }, [products, query]); // ✅ Correct dependencies
+  }, [products, query]);
   
-  // ✅ AI adds: Debouncing from your existing patterns
   const debouncedQuery = useDebounce(query, 300);
   
   return (
@@ -109,7 +115,7 @@ function SearchComponent({ products }) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search products..."
-        aria-label="Search products" // ✅ AI adds accessibility
+        aria-label="Search products"
       />
       {filteredProducts.map(product => (
         <ProductCard key={product.id} product={product} />
@@ -119,46 +125,43 @@ function SearchComponent({ products }) {
 }
 ```
 
-**Result:** Production-ready code that follows your patterns, handles edge cases, and performs optimally.
+The context-aware implementation automatically applies debouncing, memoization, accessibility standards, and appropriate algorithm selection based on data size and project patterns.
 
-## Commands You'll Actually Use
+## Useful Commands
 
 ```bash
-# Start here (detects your project automatically)
+# Initialize framework in your project
 npx ctxforge guided
 
-# Generate smart feature specs  
+# Generate behavioral specifications  
 npx ctxforge spec "users need to upload files with drag and drop"
 
-# Check everything is working
+# Validate setup
 npx ctxforge validate
+
+# Check project health  
+npx ctxforge health
 ```
 
-## Works With Everything
+**Each command takes 10-30 seconds and gives immediate feedback.**
 
-✅ **Languages:** JavaScript, Python, Go, Rust, Java, C#...  
-✅ **Frameworks:** React, Vue, Django, Rails, Express, FastAPI...  
-✅ **AI Tools:** Claude Code, Cursor, ChatGPT, Gemini CLI...
+## Frequently Asked Questions
 
-## Why This Works
+**How long does initial setup require?**  
+Setup typically takes 2-3 minutes, primarily spent providing project-specific information during the guided initialization process.
 
-Most "AI coding" fails because:
-1. AI lacks project context 
-2. AI ignores performance best practices
-3. AI can't maintain consistency across sessions
+**Is integration required with specific AI tools?**  
+No. ctxforge generates standard context files that any AI coding assistant can read, maintaining compatibility with your current development workflow.
 
-ctxforge solves all three by giving AI a "senior developer brain" that understands your specific project.
+**What happens if my project uses unsupported technologies?**  
+The framework automatically detects over 20 programming languages and frameworks. For unsupported technologies, it provides generic engineering standards that can be customized for your specific stack.
+
+**Can the applied standards be modified?**  
+Yes. All generated files including `CONTEXT.md` and performance directives are fully editable to match your team's specific requirements and coding standards.
+
+**Does ctxforge transmit code or project data externally?**  
+⚠️ No. All operations are performed locally. ctxforge only creates context files that your AI assistant reads during development sessions.
 
 ---
 
-## Ready to Never Debug AI Code Again?
-
-```bash
-npx ctxforge guided
-```
-
-**Takes 2 minutes. Works with any project. Any AI tool.**
-
----
-
-*MIT License - [GitHub](https://github.com/vencolini/ctxforge) - [Full Documentation](docs/README.md)*
+**Documentation:** [docs/README.md](docs/README.md) | **Issues:** [GitHub Issues](https://github.com/vencolini/ctxforge/issues) | **npm:** [ctxforge](https://www.npmjs.com/package/ctxforge)

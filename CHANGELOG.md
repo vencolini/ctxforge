@@ -5,6 +5,20 @@ All notable changes to ctxforge will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2025-10-01
+
+### Documentation
+- **Professional Documentation Rewrite** - Improved README.md with technical focus and reduced promotional language
+- **Enhanced Installation Instructions** - Clear installation options with examples
+- **Professional FAQ Section** - Comprehensive answers to common technical questions
+- **Improved Code Examples** - Clean implementation examples without excessive annotations
+- **Strategic Icon Usage** - Minimal, purposeful icon usage for better readability
+
+### Technical Improvements
+- **Structured Content Organization** - Better section headers and logical flow
+- **Comprehensive Framework Description** - Detailed technical specifications and compatibility information
+- **Enhanced Quick Start Guide** - Step-by-step instructions with expected outcomes
+
 ## [1.2.0] - 2025-10-01
 
 ### 🚀 Major Features Added
@@ -93,6 +107,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support for Claude Code, Gemini CLI, ChatGPT, and any LLM
 - Language and framework agnostic
 
+[1.2.1]: https://github.com/vencolini/ctxforge/releases/tag/v1.2.1
 [1.2.0]: https://github.com/vencolini/ctxforge/releases/tag/v1.2.0
 [1.1.0]: https://github.com/vencolini/ctxforge/releases/tag/v1.1.0
 [1.0.0]: https://github.com/vencolini/ctxforge/releases/tag/v1.0.0
