@@ -1,7 +1,7 @@
 {
   "name": "ctxforge",
-  "version": "1.0.1",
-  "description": "Context Engineering Framework for LLM-Assisted Development",
+  "version": "1.2.0",
+  "description": "Context Engineering Framework for LLM-Assisted Development with Analytics, Git Integration, and IDE Support",
   "main": "index.js",
   "bin": {
     "ctxforge": "bin/ctxforge.js"
@@ -19,9 +19,15 @@
     "development",
     "framework",
     "context-engineering",
-    "ai-assisted-coding"
+    "ai-assisted-coding",
+    "analytics",
+    "git-hooks",
+    "ide-integration",
+    "vscode",
+    "cursor",
+    "code-quality"
   ],
-  "author": "Ventsislav Petrov - LLM coders",
+  "author": "Ventsislav Petrov + Claude Sonnet 4.5",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -39,6 +45,7 @@
     "docs/",
     "templates/",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE"
   ]
 }

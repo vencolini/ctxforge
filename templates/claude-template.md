@@ -9,6 +9,20 @@
 
 ---
 
+## 📊 Context Health Dashboard
+
+**Size:** XKB (Target: <50KB) ✅/❌  
+**Active Features:** X  
+**Completed Features:** X (X archived)  
+**Project Learnings:** X (X consolidated)  
+**State Snapshots:** X files  
+**Last Optimization:** [Date]  
+**Health Score:** XX/100 🟢/🟡/🔴
+
+*Run `npx ctxforge health` for detailed health report*
+
+---
+
 ## 🎯 Project Vision
 
 [One-sentence description of what this project does and who it's for]

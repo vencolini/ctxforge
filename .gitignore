@@ -1,6 +1,22 @@
 # Personal files (not part of distribution)
 action-plan.md
 testing-guide.md
+test-validation.md
+ENHANCED-TESTING-REPORT.md
+docs/framework-improvement-proposal.md
+
+# Development artifacts (created during framework development)
+docs/context/behavioral-specs/
+docs/context/state-snapshots/
+enhanced-testing/
+temp-testing/
+
+# LLM integration files (created by init, not distributed)
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+CODEX.md
+CONTEXT.md
 
 # OS files
 .DS_Store

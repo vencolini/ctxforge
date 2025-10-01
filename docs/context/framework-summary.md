@@ -40,7 +40,7 @@ You now have a complete, production-ready context engineering framework for LLM-
 - Communication protocols
 - Quality checklists
 
-#### 5. **performance-directives.md**
+#### 5. **performance-directives/**
 - Universal code quality rules
 - Language/framework-specific directives
 - Non-negotiable best practices
@@ -164,7 +164,7 @@ gemini-cli --context docs/context/context-engineering-guide.md
 | QUICK-START.md | Fast setup guide | Human (once) | Manual (rarely) |
 | context-engineering-guide.md | Detailed process | LLM & Human | Manual (rarely) |
 | llm-instructions.md | LLM guidance | LLM (every session) | Manual (rarely) |
-| performance-directives.md | Code quality rules | LLM (every task) | Human (as patterns emerge) |
+| performance-directives/ | Code quality rules | LLM (every task) | Human (as patterns emerge) |
 | claude.md | Project context | LLM (every session) | LLM (after each task) |
 | behavioral-spec-template.md | Feature spec format | LLM (when needed) | Copy & customize |
 | task-execution-protocol.md | Task execution steps | LLM (every task) | Manual (rarely) |
@@ -321,7 +321,7 @@ Future tasks check these learnings to avoid repeating mistakes.
 The framework is universal but should be customized for your stack:
 
 **React Projects:**
-- Keep all React directives in performance-directives.md
+- Keep all React directives in performance-directives/react-specific.md
 - Add React-specific learnings as you discover them
 - Use hooks/components structure in project templates
 
@@ -331,7 +331,7 @@ The framework is universal but should be customized for your stack:
 - Adjust file structure for Django apps
 
 **Other Stacks:**
-- Add framework-specific sections to performance-directives.md
+- Add framework-specific modules to performance-directives/
 - Update claude.md template with your tech stack
 - Customize project structure for your environment
 
@@ -387,7 +387,7 @@ Track these to measure framework effectiveness:
 **Solution:** More detailed behavioral specs, ask clarifying questions earlier
 
 ### "Quality issues in code"
-**Solution:** Check if LLM is reading performance-directives.md before each task
+**Solution:** Check if LLM is reading performance-directives/README.md and relevant modules before each task
 
 ### "Repeated mistakes"
 **Solution:** Ensure project-learnings.md is being checked before each task

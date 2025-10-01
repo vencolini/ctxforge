@@ -66,7 +66,7 @@ PHASE 2: AUTONOMOUS EXECUTION (LLM implements from spec)
 
 ## 🏗️ Performance & Code Quality Directives
 
-[Copy from performance-directives.md, customize for stack]
+[Copy from performance-directives/README.md and relevant modules, customize for stack]
 
 ## 📐 Architecture Overview
 

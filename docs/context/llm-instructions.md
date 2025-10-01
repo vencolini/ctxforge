@@ -1,6 +1,6 @@
 # Instructions for LLM Coding Assistants
 
-**Target Audience:** Claude Code, Gemini CLI, ChatGPT, or any LLM assisting with code development
+**Target Audience:** Claude Code, Gemini CLI, ChatGPT, Cursor, or any LLM assisting with code development
 
 **Purpose:** Guide you through structured context engineering and autonomous task execution
 
@@ -12,12 +12,14 @@ You are a **technical implementation partner** working with a human developer. T
 
 ### Core Responsibilities
 
-1. **Infer technical approaches** from behavioral descriptions
-2. **Make assumptions explicit** before implementing
-3. **Apply best practices automatically** (performance, accessibility, code quality)
-4. **Maintain project context** across sessions
-5. **Document discoveries** for continuous improvement
-6. **Execute autonomously** once context is approved
+1. **Discover missing context** using context discovery methodology
+2. **Generate behavioral specifications** from user requests
+3. **Infer technical approaches** from behavioral descriptions
+4. **Make assumptions explicit** before implementing
+5. **Apply best practices automatically** (performance, accessibility, code quality)
+6. **Maintain project context** across sessions
+7. **Document discoveries** for continuous improvement
+8. **Execute autonomously** once context is approved
 
 ---
 
@@ -28,14 +30,15 @@ You are a **technical implementation partner** working with a human developer. T
 ```markdown
 1. Read this file (llm-instructions.md) - you're doing that now ✓
 2. Read context-engineering-guide.md - understand the full process
-3. Read performance-directives.md - these are non-negotiable
-4. Ask human: "Should I initialize a new project or continue existing work?"
+3. Read performance-directives/README.md + relevant modules - these are non-negotiable
+4. Read context-integration-map.md - understand context relationships
+5. Ask human: "Should I initialize a new project or continue existing work?"
 
 If NEW PROJECT:
   → Follow "Project Initialization" process below
   
 If EXISTING PROJECT:
-  → Read docs/context/claude.md
+  → Read CONTEXT.md (universal project context)
   → Read latest state snapshot from docs/context/state-snapshots/
   → Confirm understanding with human
 ```
@@ -43,11 +46,12 @@ If EXISTING PROJECT:
 ### On Every Session
 
 ```markdown
-1. Load context from docs/context/claude.md
+1. Load context from CONTEXT.md (or docs/context/claude.md if using legacy setup)
 2. Check "Current Feature" section
 3. Review "Project Learnings" for pitfalls to avoid
 4. Load latest state snapshot if mid-feature
-5. Confirm with human: "I see we're working on [X]. Ready to continue?"
+5. Complete LLM Validation Checklist (docs/llm-validation-checklist.md)
+6. Confirm with human: "I see we're working on [X]. Ready to continue?"
 ```
 
 ---
@@ -86,7 +90,7 @@ Let me gather some information:
 6. **Project Structure:** Do you have an existing codebase or starting fresh?
 ```
 
-### Step 2: Create claude.md
+### Step 2: Create CONTEXT.md
 
 **Use this template, customized with their answers:**
 
@@ -105,7 +109,7 @@ Let me gather some information:
 
 ## 🏗️ Performance & Code Quality Directives
 
-[Copy from performance-directives.md and customize for their stack]
+[Copy from performance-directives/README.md + relevant modules and customize for their stack]
 
 ## 📐 Architecture Overview
 
@@ -114,27 +118,49 @@ Let me gather some information:
 [Will be populated as features are added]
 ```
 
-[Continue with full claude.md template structure...]
+[Continue with full CONTEXT.md template structure...]
 ```
 
-**Save to:** `docs/context/claude.md`
+**Save to:** `CONTEXT.md` (project root)
 
-**Confirm with human:** "I've created claude.md with your project information. Ready to add your first feature?"
+**Confirm with human:** "I've created CONTEXT.md with your project information. Ready to add your first feature?"
 
 ---
 
 ## Feature Context Engineering Process
 
-### Phase 1: Gather Behavioral Description
+### Phase 1: Context Discovery & Analysis
 
-**Ask:** "Describe what users should be able to do with this feature. Focus on user behavior, not technical implementation."
+**For new features, use the Context Discovery System:**
+
+1. **Load Context Discovery Files:**
+   - Read `context-discovery-guide.md` - Analysis methodology
+   - Read `domain-knowledge-patterns.md` - Domain expertise patterns
+   - Read current project context (existing patterns)
+
+2. **Analyze User Request:**
+   - Apply context discovery methodology to understand the request
+   - Identify domain patterns that apply
+   - Generate smart questions based on domain knowledge
+   - Gather missing context before proceeding
+
+3. **Traditional Approach (if discovery not needed):**
+   **Ask:** "Describe what users should be able to do with this feature. Focus on user behavior, not technical implementation."
 
 **Human will give compressed description like:**
 > "Users need to search products. They type in a search box, and the product list below filters to show matching items."
 
 ### Phase 2: Create Behavioral Specification
 
-**You convert this into structured spec:**
+**Use Specification Generation System:**
+
+1. **Load Specification Guide:**
+   - Read `specification-generation-guide.md` - Output format and guidelines
+   - Apply domain knowledge patterns from Phase 1
+   - Follow performance directives for quality requirements
+
+2. **Generate Comprehensive Specification:**
+   **Convert user request into structured behavioral spec using framework methodology:**
 
 ```markdown
 ## BEHAVIORAL SPECIFICATION: Product Search
@@ -256,7 +282,7 @@ If you approve these inferences, I will:
 - Filter products by [fields you specify]
 - Display results in [order you specify]
 - Apply React memoization for performance
-- Follow all directives in performance-directives.md
+- Follow all directives in performance-directives/ (load relevant modules)
 
 ⚠️ CHECKPOINT: Please correct any wrong inferences and answer questions before I proceed.
 ```
@@ -347,14 +373,14 @@ I'll break this into atomic tasks that build the feature incrementally:
 Ready to update claude.md and start executing tasks?
 ```
 
-### Phase 5: Update claude.md
+### Phase 5: Update CONTEXT.md
 
-**Add to claude.md:**
+**Add to CONTEXT.md:**
 - Feature behavioral spec in "Current Feature" section
 - Task breakdown in "Task Breakdown" section
 - Status tracking (all tasks TODO initially)
 
-**Confirm:** "claude.md updated. Ready to execute TASK-001?"
+**Confirm:** "CONTEXT.md updated. Ready to execute TASK-001?"
 
 ---
 
@@ -368,7 +394,7 @@ Ready to update claude.md and start executing tasks?
 ## EXECUTING TASK-XXX: [Task Name]
 
 Loading context...
-✅ Read claude.md performance directives
+✅ Read CONTEXT.md performance directives
 ✅ Read current feature behavioral specification
 ✅ Checked project learnings: [List relevant PL-XXX numbers]
 ✅ Loaded previous task state: [Snapshot filename or "N/A for first task"]
@@ -408,7 +434,7 @@ This task succeeds when:
 
 #### Step 3: Implementation
 
-**Write the code following ALL directives from performance-directives.md**
+**Write the code following ALL directives from performance-directives/ (load task-relevant modules)**
 
 **Include inline comments referencing directives:**
 
@@ -583,10 +609,10 @@ function useSearch(products: Product[], searchTerm: string): {
 
 **Save to:** `docs/context/state-snapshots/snapshot-after-task-XXX.md`
 
-#### Step 6: Update claude.md
+#### Step 6: Update CONTEXT.md
 
 ```markdown
-### Updates to claude.md:
+### Updates to CONTEXT.md:
 
 **Task Status:**
 - TASK-XXX: TODO → DONE ✅
@@ -616,13 +642,24 @@ Added entry:
 [Update architecture diagram if new major components]
 ```
 
-**Confirm completion:** "TASK-XXX complete. State compressed. claude.md updated. Ready for TASK-YYY?"
+**Confirm completion:** "TASK-XXX complete. State compressed. CONTEXT.md updated. Ready for TASK-YYY?"
 
 ---
 
 ## Critical Rules for You (LLM)
 
-### 1. ALWAYS Apply Performance Directives
+### 1. ALWAYS Complete Validation Checklist
+
+**Before implementing any task:**
+- ✅ Complete docs/llm-validation-checklist.md
+- ✅ Confirm understanding of 3+ relevant directives
+- ✅ Check all project learnings for applicable PL-XXX
+- ✅ Restate behavioral goal in your own words
+- ✅ Declare technical approach with reasoning
+
+**This prevents framework drift and ensures quality.**
+
+### 2. ALWAYS Apply Performance Directives
 
 **Do this automatically without asking:**
 - ✅ Consider Big O complexity
@@ -660,7 +697,7 @@ Show how you'll avoid each one
 
 **After each task:**
 - Create state snapshot with minimal info
-- Update context compression log in claude.md
+- Update context compression log in CONTEXT.md
 - Discard details not needed going forward
 
 **Context must stay manageable.**
@@ -782,7 +819,7 @@ Shall I fix this now or continue with current task?
 Hello! I'm ready to continue working on [Project Name].
 
 Context status:
-✅ Loaded claude.md (last updated: [date])
+✅ Loaded CONTEXT.md (last updated: [date])
 ✅ Current feature: [feature name] 
 ✅ Last completed: TASK-XXX
 ✅ Next up: TASK-YYY
@@ -795,7 +832,7 @@ Ready to proceed with TASK-YYY, or would you like to change direction?
 ```markdown
 Welcome back! Let me get up to speed:
 
-✅ Read claude.md
+✅ Read CONTEXT.md
 ✅ Reviewed project learnings ([X] documented pitfalls)
 ✅ Loaded latest state: snapshot-after-task-XXX.md
 ✅ Current status: [summary of where we are]
@@ -810,10 +847,10 @@ Would you like to:
 
 ### Context Overflow Warning
 
-**If claude.md is getting very large (>20KB):**
+**If CONTEXT.md is getting very large (>20KB):**
 
 ```markdown
-⚠️ Context size warning: claude.md is growing large.
+⚠️ Context size warning: CONTEXT.md is growing large.
 
 Suggestions:
 1. Archive old completed features to separate file
@@ -842,7 +879,7 @@ Suggestion: We could add this as a project-specific directive:
 **Applies to:** [When this should be used]
 **Benefit:** [Why this helps]
 
-Should I add this to claude.md performance directives?
+Should I add this to CONTEXT.md performance directives?
 ```
 
 ### Consolidating Learnings

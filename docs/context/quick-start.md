@@ -17,7 +17,7 @@ cp README.md docs/context/
 cp QUICK-START.md docs/context/
 cp context-engineering-guide.md docs/context/
 cp llm-instructions.md docs/context/
-cp performance-directives.md docs/context/
+cp -r performance-directives/ docs/context/
 
 # Copy templates
 cp behavioral-spec-template.md docs/templates/
@@ -77,7 +77,7 @@ claude-code --file docs/context/context-engineering-guide.md \
 2. Generate technical inferences
 3. Ask for your approval
 4. Create task breakdown
-5. Update claude.md
+5. Update CONTEXT.md
 
 ## Step 4: Execute First Task (5 min)
 
@@ -92,7 +92,7 @@ claude-code --file docs/context/claude.md
 # 2. Implement task with best practices
 # 3. Self-review code
 # 4. Compress state for next task
-# 5. Update claude.md
+# 5. Update CONTEXT.md
 ```
 
 ## Step 5: Verify & Continue
@@ -339,7 +339,7 @@ After your first feature is working:
 **Solution:** Stop at checkpoint, correct inference before it codes
 
 **Problem:** Quality issues in code  
-**Solution:** Check performance-directives.md is being applied
+**Solution:** Check performance-directives/ modules are being applied
 
 **Problem:** Repeated mistakes  
 **Solution:** Document in project-learnings.md, LLM will check before each task
