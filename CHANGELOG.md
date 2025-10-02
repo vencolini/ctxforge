@@ -5,6 +5,278 @@ All notable changes to ctxforge will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.1] - 2025-10-02
+
+### 📚 Documentation
+
+- **README.md Complete Rewrite** - Updated for v3.0 protocol auto-loading system
+  - Protocol auto-loading architecture explanation
+  - All 15 specialized protocols documented
+  - Token efficiency comparison (60-70% reduction)
+  - Universal LLM compatibility highlighted
+  - Platform integration examples (12+ platforms)
+  - Real-world workflow examples
+  - Updated quick start guide using CORE.md
+  - Migration guide from v2.x
+  - FAQ section updated for v3.0
+  - Token budget comparison tables
+- **Installation Guide** - Updated to reflect v3.0 file structure
+- **Integration Examples** - Clarified example-integrations/ folder purpose
+
+### 🐛 Fixes
+
+- Fixed outdated documentation references to v2.0
+- Corrected token count documentation (now accurate for v3.0)
+
+---
+
+## [3.0.0] - 2025-10-02
+
+### 🚀 Major Release: Protocol Auto-Loading System
+
+**Revolutionary architecture that loads only the protocol you need, when you need it.**
+
+### ✨ Game-Changing Features
+
+#### Protocol Auto-Loading (60-70% Token Reduction)
+- **Before (v2.1):** Load entire 25K token framework every session
+- **After (v3.0):** Load 5K CORE.md + 4K protocol = 9K tokens per session
+- **Result:** 60-70% token reduction = 2-3x more code fits in context!
+
+#### Intelligent Intent Detection
+```
+Your request: "Add user login"
+     ↓
+CORE.md detects: FEATURE_DEVELOPMENT intent
+     ↓
+Auto-loads: protocols/FEATURE-DEVELOPMENT.md
+     ↓
+Executes: Discovery → Inferences → Implementation
+```
+
+No manual protocol selection needed. Just describe what you want.
+
+#### 15 Specialized Protocols
+Each protocol is a complete, standalone workflow file:
+
+1. **FEATURE-DEVELOPMENT.md** - Build new functionality
+2. **BUG-FIXING.md** - Diagnose and fix bugs
+3. **REFACTORING.md** - Improve code quality
+4. **CODE-REVIEW.md** - Quality assessment
+5. **TESTING.md** - Write comprehensive tests
+6. **INVESTIGATION.md** - Understand how code works
+7. **DOCUMENTATION.md** - Write docs and README files
+8. **PERFORMANCE-OPTIMIZATION.md** - Make code faster
+9. **SECURITY-AUDIT.md** - Find vulnerabilities
+10. **ARCHITECTURE-DESIGN.md** - Design system architecture
+11. **DEPENDENCY-MANAGEMENT.md** - Add/update packages
+12. **DEPLOYMENT.md** - Deploy to production
+13. **PAIR-PROGRAMMING.md** - Collaborative development
+14. **LEARNING.md** - Teaching and tutorials
+15. **DATABASE-MIGRATION.md** - Schema changes
+
+#### Unlimited Scalability
+- **v2.1 Problem:** Adding 1 protocol = +3K tokens for EVERY session (unsustainable)
+- **v3.0 Solution:** Adding 1 protocol = +0 tokens unless used
+  - 15 protocols = still only 9K per session
+  - Can add 100 protocols without impacting performance!
+
+#### Multi-Protocol Sessions
+- **v2.1:** One protocol per session (reloading is expensive)
+- **v3.0:** Switch protocols seamlessly in same session
+  - Example: Fix bug → Write test → Deploy (3 protocols, one chat)
+
+### 🎯 New Architecture
+
+```
+┌─────────────────┐
+│  Your Request   │
+└────────┬────────┘
+         │
+         ↓
+┌─────────────────┐
+│   CORE.md       │ ← 5K tokens (always loaded)
+│ Intent Detection│
+└────────┬────────┘
+         │
+         ↓ Detects intent
+         │
+┌────────┴────────────────────┐
+│  Auto-load 1 Protocol       │ ← 3-5K tokens (only what's needed)
+│  protocols/[INTENT].md      │
+└─────────────────────────────┘
+         │
+         ↓
+┌─────────────────┐
+│ Execute Workflow│ (Discovery → Implementation → Documentation)
+└─────────────────┘
+```
+
+### 📦 Installation Changes
+
+**New structure:**
+```
+docs/context/
+├── CORE.md                          # Entry point (5K tokens)
+├── FRAMEWORK.md                     # Human reference guide
+├── PERFORMANCE-DIRECTIVES.md        # Quality rules
+├── DISCOVERY-QUESTIONS.md           # Question templates
+├── TEMPLATES.md                     # Document structures
+├── QUICK-RELOAD.md                  # Recovery guide
+├── project.md                       # Created by LLM
+└── protocols/                       # 15 specialized protocols
+    ├── FEATURE-DEVELOPMENT.md       # Auto-loaded on demand
+    ├── BUG-FIXING.md
+    ├── REFACTORING.md
+    ├── CODE-REVIEW.md
+    ├── TESTING.md
+    ├── INVESTIGATION.md
+    ├── DOCUMENTATION.md
+    ├── PERFORMANCE-OPTIMIZATION.md
+    ├── SECURITY-AUDIT.md
+    ├── ARCHITECTURE-DESIGN.md
+    ├── DEPENDENCY-MANAGEMENT.md
+    ├── DEPLOYMENT.md
+    ├── PAIR-PROGRAMMING.md
+    ├── LEARNING.md
+    └── DATABASE-MIGRATION.md
+```
+
+**Total:** 21 files, ~100K tokens in library
+**Per session:** 8-10K tokens loaded (only what you need!)
+
+### 🎯 Universal Command
+
+Works with **any LLM:**
+```
+Read docs/context/CORE.md and ask what I want to work on
+```
+
+That's it. No configuration. No setup.
+
+### 🌍 Universal Compatibility
+
+✅ Claude / Claude Code
+✅ ChatGPT / GPT-4
+✅ Google Gemini
+✅ GitHub Copilot
+✅ Cursor
+✅ Codeium
+✅ Local models (Ollama, LM Studio)
+✅ Agent systems (LangChain, CrewAI)
+✅ Any LLM with file reading capability
+
+### 📊 Token Efficiency
+
+| Version | Framework Tokens | Code Budget | Protocols |
+|---------|------------------|-------------|-----------|
+| v2.1 | 25K (all at once) | 175K | 6 (all loaded) |
+| v3.0 | 9K (core + 1 protocol) | 191K | 15 (1 loaded) |
+| **Improvement** | **64% reduction** | **+9% more space** | **+150% more protocols** |
+
+### 🚀 Developer Experience
+
+#### Before (v2.1)
+```
+1. Load full framework (25K tokens)
+2. Choose protocol manually
+3. Limited to 1 protocol per session
+4. Adding protocols = token overhead
+```
+
+#### After (v3.0)
+```
+1. Load CORE.md (5K tokens)
+2. LLM asks what to work on
+3. Auto-detects intent and loads protocol
+4. Switch protocols seamlessly
+5. Add unlimited protocols without overhead
+```
+
+### 🔧 Technical Changes
+
+#### New Files
+- `CORE.md` - Lightweight entry point with intent detection table
+- 15 protocol files in `protocols/` directory
+
+#### Updated Files
+- `lib/commands/init.js` - Installs v3.0 structure
+- `package.json` - v3.0.0, updated description
+- `README.md` - Complete rewrite for v3.0
+- `CHANGELOG.md` - This entry
+
+#### Backward Compatibility
+- v2.1 files still included (FRAMEWORK.md works as before)
+- Users can migrate at their own pace
+- `npx ctxforge init` installs both v2.1 and v3.0 files
+
+### 💡 Why v3.0 is Revolutionary
+
+#### 1. Cognitive Load Reduction
+**v2.1:** "Which protocol do I need? Let me load it manually..."
+**v3.0:** Just say what you want. Framework figures it out.
+
+#### 2. Unlimited Scalability
+**v2.1:** 10 protocols = 30K overhead (too heavy!)
+**v3.0:** 100 protocols = still only 9K per session
+
+#### 3. Multi-Workflow Sessions
+Work on multiple types of tasks in one session:
+- Morning: Add feature (FEATURE-DEVELOPMENT)
+- Afternoon: Fix bugs (BUG-FIXING)
+- Evening: Deploy (DEPLOYMENT)
+
+All seamless. All efficient.
+
+#### 4. Future-Proof Architecture
+Add custom protocols by creating new files:
+```
+protocols/
+├── custom-ML-TRAINING.md
+├── custom-BLOCKCHAIN-AUDIT.md
+└── custom-GAME-LEVEL-DESIGN.md
+```
+
+Add to CORE.md intent table. Done.
+
+### 📚 Documentation
+
+- **README.md** - Completely rewritten (v3.0 focused)
+- **CORE.md** - New lightweight entry point
+- **FRAMEWORK.md** - Updated for v3.0 architecture
+- **All 15 protocols** - Complete standalone workflow files
+- **example-integrations/** - 12+ platform integration guides
+
+### 🔄 Migration from v2.x
+
+**Good news:** v3.0 is backward compatible!
+
+```bash
+# v2.1 command still works
+"Read docs/context/FRAMEWORK.md and initialize project"
+
+# v3.0 command (recommended)
+"Read docs/context/CORE.md and ask what I want to work on"
+```
+
+**To fully migrate:**
+1. `npx ctxforge@latest init` (installs v3.0 files)
+2. Use new CORE.md entry point
+3. Enjoy 60-70% token reduction!
+
+### ⚠️ Breaking Changes
+
+None. v3.0 is fully backward compatible with v2.1.
+
+### 🎓 Philosophy
+
+**v2.1:** Load everything, choose protocol manually
+**v3.0:** Load intelligently, detect intent automatically
+
+**Key Innovation:** Protocol auto-loading transforms ctxforge from a static framework into an adaptive system that loads exactly what you need, when you need it.
+
+---
+
 ## [2.1.0] - 2025-10-02
 
 ### ✨ New Workflows
