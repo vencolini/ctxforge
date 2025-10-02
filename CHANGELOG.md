@@ -5,6 +5,87 @@ All notable changes to ctxforge will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2025-10-02
+
+### ✨ New Workflows
+
+#### Bug-Fixing Protocol
+- **Discovery-First Debugging** - Ask 3-5 questions before fixing
+  - Exact reproduction steps
+  - Scope (always/intermittent, which browsers)
+  - Recent changes (when did it start)
+  - Impact assessment
+  - Related issues check
+- **Root Cause Analysis** - Hypothesis with confidence level before implementing
+- **Solution Proposal** - Show fix + side effects + testing plan
+- **Learning Documentation** - Capture why bug happened and prevention rule
+
+#### Refactoring Protocol
+- **Understand Before Rewriting** - Ask what needs improvement and what must stay the same
+- **Analysis & Proposal** - Show issues, proposed changes, risks before refactoring
+- **Incremental Refactoring** - Small reviewable steps, not big-bang rewrites
+- **Test Preservation** - Existing tests must pass without modification
+- **Learning Capture** - Document patterns that led to messy code
+
+#### Code Review Protocol
+- **Multi-Level Review** - Critical → Important → Nice-to-have priorities
+- **Quality Score** - Automated scoring against 30 performance directives
+- **Actionable Feedback** - Specific fixes, not vague suggestions
+- **Best Practices Recognition** - Highlight what's done well
+- **Fix Offers** - LLM can implement fixes or explain for human to fix
+
+#### Testing Protocol
+- **Test Discovery** - Ask what to test, which type, coverage expectations
+- **Test Plan First** - Show test scenarios before writing any code
+- **Structured Testing** - Arrange-Act-Assert pattern
+- **Coverage Reporting** - Show coverage metrics and missing scenarios
+- **Mocking Strategy** - Explicit approach for dependencies
+
+#### Investigation/Debugging Protocol
+- **Intent Clarification** - Distinguish "how it works" from "why it's broken"
+- **Code Flow Explanation** - High-level flow → key files → data flow
+- **Performance Analysis** - Symptoms → investigation → root cause → fix options
+- **No Assumptions** - Ask what user wants to understand before explaining
+
+### 🛠️ Improvements
+
+#### Mid-Session Context Refresh
+- **Framework Reload** - Instructions for LLM to reload protocol mid-conversation
+- **Self-Trigger Conditions** - LLM detects when it's not following framework
+- **Quick Recovery** - Explicit steps to get back on track
+
+#### Quick Reload Guide
+- **QUICK-RELOAD.md** - New reference file for users
+- **Symptom Detection** - How to know framework isn't being used
+- **Copy-Paste Commands** - Ready-to-use reload instructions
+- **Workflow-Specific Reloads** - Separate instructions for bugs vs features vs reviews
+
+### 📦 Installation Changes
+
+- **6 Framework Files** (was 5)
+  - Added: `QUICK-RELOAD.md` (~3K tokens)
+  - Total: ~63K tokens (still well under budget)
+
+### 🔧 Bug Fixes
+
+- **Missing Bug Workflow** - Framework only had feature development, now includes systematic debugging
+- **Context Loss** - LLM could forget framework mid-session, now has reload instructions
+- **No Review Guidance** - Code review was mentioned but not specified, now has full protocol
+- **Testing Vagueness** - "Write tests" had no discovery phase, now systematic
+
+### 📚 Documentation
+
+- **Expanded LLM-INSTRUCTIONS.md** - Added 5 new protocol sections (~400 lines)
+- **User Guide** - QUICK-RELOAD.md for when things go wrong
+- **Protocol Coverage** - Now covers full development lifecycle:
+  - Project initialization ✓
+  - Feature development ✓
+  - Bug fixing ✓
+  - Refactoring ✓
+  - Code review ✓
+  - Testing ✓
+  - Investigation ✓
+
 ## [2.0.0] - 2025-10-02
 
 ### 🚀 Major Release: Framework v2.0 - Context Discovery

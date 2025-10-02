@@ -52,8 +52,5 @@
     "README.md",
     "CHANGELOG.md",
     "LICENSE"
-  ],
-  "dependencies": {
-    "claude": "^0.1.1"
-  }
+  ]
 }
