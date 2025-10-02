@@ -1,0 +1,691 @@
+# Framework Templates
+
+**Minimal structures for framework artifacts. LLM auto-fills from discovery.**
+
+---
+
+## project.md Template
+
+**Created once, grows with project. Living document.**
+
+```markdown
+---
+# [Project Name]
+
+**Vision:** [One sentence - what and why]
+
+**Stack:** [Language, framework, key libraries]
+
+**Status:** [Current phase: Setup | Active Development | Maintenance]
+
+**Created:** [Date]
+**Last Updated:** [Date]
+
+---
+
+## Performance & Quality Directives
+
+### Auto-Applied from Framework
+- All directives from PERFORMANCE-DIRECTIVES.md
+- Language: [Language-specific directives]
+- Framework: [Framework-specific directives]
+
+### Project-Specific
+[Add custom directives as discovered]
+
+---
+
+## Architecture Overview
+
+### High-Level Structure
+[Diagram or description of major components]
+
+### Key Decisions
+**Decision:** [Architectural choice]
+**Reasoning:** [Why this approach]
+**Trade-offs:** [What we gave up, what we gained]
+
+[Repeat for major decisions...]
+
+### Data Flow
+[How data moves through the system]
+
+### Integration Points
+[External services, APIs, dependencies]
+
+---
+
+## Current Focus
+
+**Feature:** [What's being built now]
+
+**Status:** [Discovery | Implementation | Testing | Complete]
+
+**Tasks:**
+- [ ] TASK-001: [Description]
+- [ ] TASK-002: [Description]
+- [x] TASK-000: [Completed task]
+
+**Behavioral Spec:** [Link to spec or inline summary]
+
+---
+
+## Project Learnings
+
+[Document technical pitfalls discovered. Prevent repeated mistakes.]
+
+### PL-001: [Issue Name]
+**Discovered:** TASK-XXX, [date]
+**Issue:** [What went wrong]
+**Root Cause:** [Why it happened]
+**Solution:** [How fixed]
+**Prevention:** [How to avoid in future]
+**Category:** [Performance|Architecture|Bug|Security|A11y]
+
+[Add more as discovered...]
+
+---
+
+## Completed Features
+
+### [Feature Name]
+**Completed:** [Date]
+**Summary:** [One-sentence description]
+**Code:** [Path to implementation]
+**Learnings:** [Reference to PL-XXX if any]
+
+[Repeat for each completed feature...]
+
+---
+
+## Current State
+
+**Last Completed:** [TASK-XXX]
+
+**Next Task:** [TASK-YYY]
+
+**Context for Next:**
+[What next task needs to know - compressed]
+
+**Working:**
+[What's confirmed functional]
+
+**In Progress:**
+[What's partially implemented]
+
+**Snapshot:** [Link to latest snapshot if exists]
+
+---
+
+## Context Compression Log
+
+**Snapshot-001:** After TASK-005 ([date])
+**Snapshot-002:** After TASK-012 ([date])
+
+[Track major compression points]
+
+---
+```
+
+**Token target:** Grow to ~20K max, then compress via snapshots
+
+---
+
+## Behavioral Spec Template
+
+**Created per feature during discovery. Auto-generated from Q&A.**
+
+```markdown
+---
+# Feature: [Name]
+
+**Created:** [Date]
+**Status:** [Discovery | Approved | Implemented]
+
+---
+
+## Overview
+
+**User Need:** [What problem this solves]
+
+**Success Metric:** [How we know it works]
+
+---
+
+## User Scenarios
+
+### Scenario: [Happy Path Name]
+
+**Priority:** High
+
+```gherkin
+GIVEN [initial context]
+  AND [additional preconditions]
+WHEN [user action]
+THEN [immediate outcome]
+  AND [secondary outcome]
+  AND [state change]
+```
+
+**Acceptance Criteria:**
+- [ ] [Specific testable criterion]
+- [ ] [Another criterion]
+
+---
+
+### Scenario: [Edge Case 1]
+
+**Priority:** Medium
+
+```gherkin
+GIVEN [edge case context]
+WHEN [action triggering edge case]
+THEN [expected handling]
+  AND [user feedback]
+```
+
+---
+
+### Scenario: [Error Case]
+
+**Priority:** High
+
+```gherkin
+GIVEN [error context]
+WHEN [error trigger]
+THEN [error handling]
+  AND [user-friendly message]
+  AND [recovery path]
+```
+
+---
+
+## Interaction Requirements
+
+### Performance
+- [Specific metric: e.g., "Results appear <100ms"]
+- [Loading states: e.g., "Show skeleton for >200ms operations"]
+
+### Accessibility
+- [Keyboard navigation: e.g., "Tab through, Enter to select, Escape to close"]
+- [Screen reader: e.g., "Announce result count on filter"]
+- [Visual: e.g., "4.5:1 contrast minimum"]
+
+### Responsive
+- [Mobile behavior: e.g., "Stack filters vertically <768px"]
+- [Touch targets: e.g., "Minimum 44px touch targets"]
+
+---
+
+## Success Criteria
+
+**Functional:**
+- [ ] All scenarios pass
+- [ ] Edge cases handled
+- [ ] Errors graceful
+
+**Quality:**
+- [ ] Performance targets met
+- [ ] Accessibility standards met
+- [ ] Code quality directives applied
+
+**User Experience:**
+- [ ] Feels [fast/smooth/intuitive/etc]
+- [ ] No confusion on [critical interaction]
+- [ ] Error messages actionable
+
+---
+
+## Failure Conditions
+
+**Must NOT:**
+- [Thing that must never happen]
+- [Another critical constraint]
+
+**Should Avoid:**
+- [Non-ideal but acceptable edge case]
+
+---
+
+## Out of Scope
+
+**Explicitly Not Included:**
+- [Feature deferred to later]
+- [Enhancement not in MVP]
+- [Related but separate concern]
+
+**Future Enhancements:**
+- [Nice-to-have addition]
+- [Optimization opportunity]
+
+---
+
+## Technical Inferences
+
+[Auto-generated by LLM during discovery]
+
+### High Confidence
+
+**[INFER-HIGH]:** [Technical decision]
+- **Reasoning:** [Why confident]
+- **Approach:** [How to implement]
+
+### Medium Confidence
+
+**[INFER-MEDIUM]:** [Technical decision]
+- **Reasoning:** [Why likely]
+- **Alternative:** [Other approach possible]
+
+### Low Confidence (Needs Confirmation)
+
+**[INFER-LOW]:** [Assumption]
+- **Reasoning:** [Why guessing]
+- **Question:** [What to clarify]
+
+---
+
+## Task Breakdown
+
+[Generated after spec approved]
+
+### TASK-001: [Atomic Unit Name]
+**Estimated:** [1.5-2.5 hours]
+**Deliverable:** [What works after this]
+**Dependencies:** [None or references]
+
+### TASK-002: [Next Unit]
+**Estimated:** [1.5-2.5 hours]
+**Deliverable:** [What works]
+**Dependencies:** [TASK-001 complete]
+
+[Continue...]
+
+**Total:** [X tasks, Y-Z hours estimated]
+
+---
+
+## Approval
+
+**Human Approved:** [Date]
+**Corrections Made:** [List if any]
+**Ready for Implementation:** [Yes/No]
+
+---
+```
+
+**Token target:** 3-5K per spec
+
+---
+
+## State Snapshot Template
+
+**Created after each task. Compresses context for next session.**
+
+```markdown
+---
+# State Snapshot: After TASK-XXX
+
+**Date:** [ISO date: 2025-10-02]
+**Task Completed:** TASK-XXX - [Task name]
+**Feature:** [Feature this task belongs to]
+**Time Spent:** [Actual hours]
+
+---
+
+## Changes Made
+
+### Files Modified
+
+**[file/path.ts]**
+- [Change description and why]
+- [Another change]
+
+**[another/file.tsx]**
+- [Change description]
+
+### Files Created
+
+**[new/file.ts]**
+- [Purpose of this file]
+- [Key exports]
+
+### Files Deleted
+
+**[old/file.ts]**
+- [Why removed]
+
+---
+
+## New Interfaces & Functions
+
+[Include signatures only, not implementations]
+
+```typescript
+// New data structures
+interface NewInterface {
+  key: Type;
+  another: Type;
+}
+
+type NewType = Type1 | Type2;
+
+// New functions (signatures only)
+function newFunction(param: Type): ReturnType;
+
+async function anotherFunction(
+  param1: Type1,
+  param2: Type2
+): Promise<ReturnType>;
+```
+
+---
+
+## Architecture Changes
+
+[Only if architectural pattern changed]
+
+**Change:** [What's different]
+**Reason:** [Why changed]
+**Impact:** [What else affected]
+
+---
+
+## What Next Task Needs to Know
+
+**Key Points:**
+- [Important context for next task]
+- [Another key point]
+
+**Gotchas:**
+- [Watch out for this]
+- [Remember this constraint]
+
+**Available for Use:**
+- [Function/component ready to use]
+- [Another ready piece]
+
+---
+
+## What Can Be Assumed Working
+
+**Functional:**
+- [Feature piece working]
+- [Another working piece]
+
+**Tested:**
+- [Manually tested scenario]
+- [Another verified case]
+
+**Integrated:**
+- [Integration point confirmed]
+
+---
+
+## Issues Encountered
+
+[Only if issues found - becomes project learning]
+
+**Issue:** [What went wrong]
+**Resolution:** [How solved]
+**Learning:** [Added to project.md as PL-XXX]
+
+---
+
+## Discarded Details
+
+[Implementation specifics no longer needed in context]
+
+- [Low-level detail]
+- [Debugging information]
+- [Exploration that didn't pan out]
+
+**Why discard:** Code is source of truth, these don't affect future tasks
+
+---
+
+## Next Recommended Task
+
+**Task:** TASK-YYY - [Name]
+**Why Next:** [Logical progression reason]
+**Estimated:** [Hours]
+
+---
+
+## Token Budget
+
+**This snapshot:** ~[X]K tokens
+**Can be compressed further:** [Yes/No - if yes, how]
+
+---
+```
+
+**Token target:** 2-4K per snapshot
+
+---
+
+## Learning Entry Template
+
+**Added to project.md when issues discovered.**
+
+```markdown
+### PL-XXX: [Concise Issue Name]
+
+**Discovered:** TASK-YYY, [date]
+
+**Issue:**
+[Technical description of what went wrong]
+
+**Root Cause:**
+[Why it happened - architectural decision, wrong assumption, framework limitation]
+
+**Solution:**
+[How it was fixed - specific code/approach]
+
+**Prevention:**
+[Rule to prevent recurrence - specific check or pattern]
+Example: "Before implementing auth, check: Will this run in multiple tabs?"
+
+**Category:** [Performance | Architecture | Bug | Security | Accessibility | UX]
+
+**Related:** [PL-XXX if related to previous learning]
+
+---
+```
+
+**Token target:** 200-400 tokens per learning
+
+---
+
+## Task Definition Template
+
+**Used in task breakdowns.**
+
+```markdown
+### TASK-XXX: [Atomic Unit Name]
+
+**Feature:** [Parent feature]
+
+**Estimated:** [1.5-2.5 hours typical]
+
+**Deliverable:**
+[Specific thing that will work after this task - testable outcome]
+
+**Acceptance Criteria:**
+- [ ] [Specific criterion]
+- [ ] [Another criterion]
+
+**Dependencies:**
+- [TASK-YYY complete] OR [None]
+
+**Implementation Notes:**
+- [Key approach point]
+- [Important consideration]
+
+**Performance Directives:**
+- [Specific directive from PERFORMANCE-DIRECTIVES.md applicable]
+
+**Testing:**
+- [How to verify this works]
+
+---
+```
+
+**Token target:** 300-500 tokens per task
+
+---
+
+## Compression Example
+
+**Initial Feature Spec (5K tokens) → After Completion (500 tokens):**
+
+```markdown
+## Completed Features
+
+### User Authentication
+**Completed:** 2025-10-01
+**Summary:** Email/password login with JWT, 7-day session, password reset
+**Code:** src/auth/, src/components/Login.tsx
+**Learnings:** PL-003 (multi-tab token refresh)
+**Spec:** docs/specs/auth-feature.md (archived)
+
+[Compressed from 5K token spec to 80 token summary]
+```
+
+---
+
+## Usage Guidelines
+
+### When to Use Each Template
+
+**project.md:**
+- Created: Project initialization
+- Updated: After every task completion
+- Compressed: When approaching 20K tokens
+
+**Behavioral Spec:**
+- Created: During feature discovery
+- Updated: During approval process
+- Archived: After feature complete (remove from project.md, keep in docs/)
+
+**State Snapshot:**
+- Created: After each task completion
+- Loaded: When resuming after break
+- Archived: After next 2-3 tasks (move to snapshots/ folder)
+
+**Learning Entry:**
+- Created: When bug/issue discovered
+- Updated: Never (create new if related)
+- Removed: Never (permanent project knowledge)
+
+**Task Definition:**
+- Created: During task breakdown phase
+- Updated: Mark complete as done
+- Removed: After feature complete (keep summary in "Completed Features")
+
+---
+
+## Token Management
+
+### Growth Patterns
+
+**Healthy Growth:**
+```
+Week 1:  5K (initialization)
+Week 2: 10K (2 features)
+Week 4: 18K (4 features)
+→ Compress
+Week 5: 12K (compressed, ready for more)
+```
+
+**Unhealthy Growth:**
+```
+Week 1:  8K (too verbose)
+Week 2: 20K (not compressing)
+Week 4: 35K (exceeding target)
+→ Major compression needed
+```
+
+### Compression Triggers
+
+**Compress when:**
+- project.md approaching 20K tokens
+- More than 5 state snapshots in project.md
+- Architecture section duplicating code
+- Old feature specs still inline (should be archived)
+
+**How to compress:**
+1. Archive completed behavioral specs (link only)
+2. Move old snapshots to snapshots/ folder
+3. Convert architecture details to summaries + code references
+4. Condense completed features to one-line + learning reference
+5. Keep only current focus detailed
+
+---
+
+## Multi-File Strategy
+
+For large projects, split into multiple files:
+
+```
+docs/context/
+├── project.md (core context, always load)
+├── architecture.md (detailed architecture, load when needed)
+├── learnings.md (all learnings, load before implementation)
+├── features/
+│   ├── auth-feature.md (archived spec)
+│   └── search-feature.md (archived spec)
+└── snapshots/
+    ├── snapshot-after-task-005.md
+    └── snapshot-after-task-012.md
+```
+
+**Load strategy:**
+- **Always:** project.md (core context)
+- **Implementation sessions:** project.md + learnings.md
+- **Architecture work:** project.md + architecture.md
+- **Resuming:** project.md + latest snapshot
+- **Reference:** Feature specs on demand
+
+---
+
+## Customization
+
+### Add Sections to project.md
+
+```markdown
+## [Custom Section Name]
+[Content specific to your project type]
+```
+
+**Examples:**
+- **API Endpoints:** For backend projects
+- **Database Schema:** For data-heavy apps
+- **Design System:** For UI-focused projects
+- **Deployment:** For DevOps-heavy projects
+
+### Custom Template
+
+Create project-specific template in project.md:
+
+```markdown
+## Custom Templates
+
+### Our-Specific-Thing Template
+[Template structure for your domain]
+```
+
+---
+
+## Philosophy
+
+> "Templates provide structure, not content.
+> LLM fills them from discovery conversations.
+> Human approves, never writes raw structure."
+
+**Structure enables automation. Automation enables quality.**
+
+---
+
+**Version:** 2.0
+**Last Updated:** 2025-10-02
+**Token Budget:** 7K for all templates (reference only, not loaded in full)

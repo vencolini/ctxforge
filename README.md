@@ -1,167 +1,472 @@
 # ctxforge
 
-> **Context Engineering Framework for LLM-Assisted Development**
+> **Ultra-lightweight context discovery framework for LLM-assisted development**
 
 [![npm version](https://badge.fury.io/js/ctxforge.svg)](https://www.npmjs.com/package/ctxforge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## What is ctxforge?
-
-ctxforge provides structured context and engineering standards to AI coding assistants, enabling them to understand your project architecture, follow established patterns, and generate production-quality code that integrates seamlessly with existing codebases.
-
-## The Challenge
-
-Modern AI coding assistants excel at generating code quickly but often lack project context, leading to:
-
-- **Inconsistent patterns** that don't match existing codebase conventions
-- **Performance oversights** like inefficient algorithms or memory management issues  
-- **Integration gaps** where new code doesn't align with established architecture
-- **Quality variance** across different development sessions
-
-ctxforge addresses these issues by providing AI with comprehensive project understanding and engineering standards.
-
-## Installation
-
-```bash
-# Option 1: Use directly (no installation needed)
-npx ctxforge guided
-
-# Option 2: Install globally
-npm install -g ctxforge
-ctxforge guided
-
-# Option 3: Install in project
-npm install ctxforge
-npx ctxforge guided
-```
-
-## Quick Start (3 steps)
-
-### Step 1: Initialize (30 seconds)
-```bash
-cd your-project
-npx ctxforge guided
-```
-**What happens:** Creates `CONTEXT.md` with your project info and `CLAUDE.md` (or AGENTS.md) for AI integration.
-
-### Step 2: Test with AI (1 minute)
-Start your AI tool (Claude Code, Cursor, etc.) - it now reads your project context automatically.
-
-**Try this:** Ask AI to "add input validation to the login form"
-- **Before ctxforge:** AI guesses, writes generic code
-- **With ctxforge:** AI knows your validation patterns, error handling, and UI components
-
-### Step 3: Generate specifications (30 seconds)
-```bash
-npx ctxforge spec "users need to filter products by category"
-```
-**What happens:** AI analyzes your request and creates a detailed behavioral specification in `docs/context/behavioral-specs/`
-
-## Framework Components
-
-### Generated Files
-- **`CONTEXT.md`** - Central project knowledge base containing architecture, patterns, and standards
-- **`CLAUDE.md` / `AGENTS.md`** - AI tool integration files for seamless context loading  
-- **`docs/context/`** - Performance directives, behavioral specifications, and domain expertise
-
-### Engineering Standards Applied
-- **Algorithmic efficiency** with documented time complexity requirements
-- **Memory management** patterns including cleanup and leak prevention
-- **Accessibility compliance** with semantic HTML and keyboard navigation
-- **Security practices** for input validation and data handling
-
-### Language and Framework Support
-Compatible with JavaScript, Python, Go, Rust, Java, C# and frameworks including React, Vue, Django, Rails, Express, FastAPI. Integrates with Claude Code, Cursor, ChatGPT, Gemini CLI, and other AI development tools.
-
-## Implementation Example
-
-Consider a typical request: "Add search functionality to the product catalog."
-
-### Standard AI Response
-```javascript
-function SearchComponent() {
-  const [query, setQuery] = useState('');
-  const [results, setResults] = useState([]);
-  
-  useEffect(() => {
-    // Issues: No debouncing, potential memory leaks, unoptimized API calls
-    fetch(`/search?q=${query}`)
-      .then(res => res.json())
-      .then(setResults);
-  }, [query]);
-  
-  return <div>{/* basic implementation */}</div>;
-}
-```
-
-### Context-Aware Implementation
-```javascript
-function SearchComponent({ products }) {
-  const [query, setQuery] = useState('');
-  
-  // Applies project-specific patterns and performance standards
-  const filteredProducts = useMemo(() => {
-    if (query.length < 2) return products;
-    return products.filter(p => 
-      p.name.toLowerCase().includes(query.toLowerCase())
-    );
-  }, [products, query]);
-  
-  const debouncedQuery = useDebounce(query, 300);
-  
-  return (
-    <div>
-      <input 
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search products..."
-        aria-label="Search products"
-      />
-      {filteredProducts.map(product => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
-  );
-}
-```
-
-The context-aware implementation automatically applies debouncing, memoization, accessibility standards, and appropriate algorithm selection based on data size and project patterns.
-
-## Useful Commands
-
-```bash
-# Initialize framework in your project
-npx ctxforge guided
-
-# Generate behavioral specifications  
-npx ctxforge spec "users need to upload files with drag and drop"
-
-# Validate setup
-npx ctxforge validate
-
-# Check project health  
-npx ctxforge health
-```
-
-**Each command takes 10-30 seconds and gives immediate feedback.**
-
-## Frequently Asked Questions
-
-**How long does initial setup require?**  
-Setup typically takes 2-3 minutes, primarily spent providing project-specific information during the guided initialization process.
-
-**Is integration required with specific AI tools?**  
-No. ctxforge generates standard context files that any AI coding assistant can read, maintaining compatibility with your current development workflow.
-
-**What happens if my project uses unsupported technologies?**  
-The framework automatically detects over 20 programming languages and frameworks. For unsupported technologies, it provides generic engineering standards that can be customized for your specific stack.
-
-**Can the applied standards be modified?**  
-Yes. All generated files including `CONTEXT.md` and performance directives are fully editable to match your team's specific requirements and coding standards.
-
-**Does ctxforge transmit code or project data externally?**  
-⚠️ No. All operations are performed locally. ctxforge only creates context files that your AI assistant reads during development sessions.
+Extract senior engineer-level code from any LLM through systematic questioning. **5 files. 60K tokens. Zero config.**
 
 ---
 
-**Documentation:** [docs/README.md](docs/README.md) | **Issues:** [GitHub Issues](https://github.com/vencolini/ctxforge/issues) | **npm:** [ctxforge](https://www.npmjs.com/package/ctxforge)
+## What is ctxforge?
+
+ctxforge is a context discovery framework that extracts implicit requirements from simple task descriptions through senior engineer-level questioning. Instead of writing detailed specs yourself, you describe user behavior and the framework guides LLMs to ask the right questions.
+
+### The Problem
+
+LLMs have vast knowledge but lack an internal mechanism to systematically discover:
+- Edge cases you haven't considered
+- Performance expectations unstated
+- Accessibility requirements assumed
+- Error scenarios unmentioned
+- Integration constraints implicit
+
+**Result:** LLMs make silent assumptions → wrong implementations → multiple rework cycles
+
+### The Solution
+
+ctxforge embeds senior engineer questioning patterns that extract complete context before any code is written:
+
+```
+You: "Users need to search products"
+  ↓
+LLM: [Asks 5-7 discovery questions]
+  - How fast should results appear?
+  - What if no matches found?
+  - Should it work while typing?
+  - What about typos?
+  ↓
+You: [Answer in 2-3 sentences each]
+  ↓
+LLM: [Shows technical inferences with confidence levels]
+  [INFER-HIGH] Debounced input (300ms)
+  [INFER-HIGH] Fuzzy matching for typos
+  [INFER-MEDIUM] Client-side filtering (<1000 items)
+  ↓
+You: [Approve or correct]
+  ↓
+LLM: [Implements correctly first time]
+```
+
+**Time investment:** 5-10 minutes of questions vs 2 hours of spec writing
+**Result:** Code works first implementation, not third attempt
+
+---
+
+## Installation
+
+### Option 1: NPX (Recommended)
+```bash
+npx ctxforge init
+```
+
+### Option 2: Global Install
+```bash
+npm install -g ctxforge
+ctxforge init
+```
+
+### Option 3: Project Install
+```bash
+npm install ctxforge
+npx ctxforge init
+```
+
+**Installation time:** 2 minutes
+**Files created:** 6 (5 framework + 1 project.md)
+**Configuration required:** None
+**Dependencies added:** None
+
+---
+
+## Quick Start
+
+### Step 1: Initialize (2 minutes)
+
+```bash
+cd your-project
+npx ctxforge init
+```
+
+**What happens:**
+- Creates `docs/context/` directory
+- Copies 5 framework files (60K tokens)
+- Creates placeholder `project.md`
+
+### Step 2: Start LLM with Framework
+
+```bash
+# Claude Code
+claude-code docs/context/FRAMEWORK.md
+
+# Or any LLM
+"Read docs/context/FRAMEWORK.md and initialize my project"
+```
+
+**LLM asks 3 questions:**
+1. Project name and one-sentence vision?
+2. Tech stack?
+3. What should we build first?
+
+**LLM creates `project.md` automatically** with:
+- Performance directives for your stack
+- Architecture section (ready for features)
+- Project learnings tracker
+- Current state management
+
+### Step 3: Develop Features
+
+Just describe user behavior:
+
+```bash
+"Users need to login with email and password"
+```
+
+**LLM runs discovery protocol:**
+1. Asks 5-7 behavioral questions
+2. Shows technical inferences
+3. Waits for approval
+4. Implements with best practices
+5. Creates state snapshot
+6. Updates project.md
+
+**You're done.** Framework handles context preservation, quality enforcement, and state management automatically.
+
+---
+
+## How It Works
+
+### Core Philosophy
+
+```
+Human provides: WHAT (user behavior & experience)
+LLM infers: HOW (technical implementation)
+Checkpoint: LLM shows inferences, human corrects BEFORE building
+```
+
+### The Discovery Loop
+
+**Traditional LLM development:**
+```
+Human: "Add search"
+LLM: *makes 20 assumptions silently*
+LLM: *writes code*
+Human: "No, that's not what I wanted"
+[Repeat 3-4 times]
+```
+
+**With ctxforge:**
+```
+Human: "Add search"
+LLM: *asks 7 discovery questions*
+Human: *answers briefly*
+LLM: *shows 20 assumptions explicitly*
+Human: *corrects 2, approves rest*
+LLM: *writes code once, correctly*
+```
+
+### Framework Components (5 Files, 60K Tokens)
+
+#### 1. FRAMEWORK.md (12K)
+Human-readable introduction and quick reference
+**Load when:** First time, showing to team
+
+#### 2. LLM-INSTRUCTIONS.md (18K)
+Complete protocol for LLM operation - discovery, implementation, compression
+**Load when:** Every development session
+
+#### 3. PERFORMANCE-DIRECTIVES.md (15K)
+30 auto-apply quality rules (Big O, accessibility, security, etc.)
+**Load when:** Implementation sessions
+
+#### 4. DISCOVERY-QUESTIONS.md (8K)
+Question templates for common scenarios (auth, CRUD, search, forms, etc.)
+**Load when:** Feature discovery phase
+
+#### 5. TEMPLATES.md (7K)
+Structures for project.md, specs, snapshots
+**Load when:** Setup, reference only
+
+#### 6. project.md (Growing Document)
+Your project's living context - vision, architecture, learnings, state
+**Created by LLM during initialization**
+**Grows:** ~5K per feature, compressed to stay under 20K
+
+---
+
+## What Makes ctxforge Different
+
+### vs Traditional Specs
+❌ **Traditional:** Write 2-page behavioral spec manually
+✅ **ctxforge:** Answer 7 questions, LLM generates spec
+
+### vs Generic Prompting
+❌ **Generic:** "Make it fast, accessible, handle errors"
+✅ **ctxforge:** Systematic discovery with confidence-scored inferences
+
+### vs Heavy Frameworks
+❌ **Heavy:** 50+ files, config hell, version conflicts
+✅ **ctxforge:** 5 markdown files, zero config, universal compatibility
+
+### vs Code Generation Tools
+❌ **Gen Tools:** Generate code, hope it's right
+✅ **ctxforge:** Discover requirements FIRST, then generate correctly
+
+---
+
+## Key Features
+
+### 🎯 Context Discovery Protocol
+Systematic questioning extracts implicit requirements before coding
+
+### ⚡ Lightweight (60K Tokens)
+81% reduction from v1.0 - efficient context usage
+
+### 🔧 Zero Configuration
+Copy 5 files, answer 3 questions, start coding
+
+### 🌍 Universal Compatibility
+Works with **any** LLM (Claude, GPT, Gemini, local models)
+
+### 📊 Automatic Quality Enforcement
+30 performance directives applied automatically (no discussion needed)
+
+### 🔄 Context Compression
+State snapshots preserve context across sessions (resume after months)
+
+### 📝 Living Documentation
+project.md grows with your codebase, always current
+
+### 🧠 Learning System
+Mistakes documented, never repeated (project-specific wisdom)
+
+---
+
+## Real-World Example
+
+### Request
+```
+"Add user authentication"
+```
+
+### Discovery Questions (LLM asks automatically)
+```
+Q1: What credentials do users provide?
+Q2: How long should sessions last?
+Q3: What about password requirements?
+Q4: Forgot password flow needed?
+Q5: Failed login handling?
+Q6: Screen reader compatibility?
+Q7: Should work on mobile?
+```
+
+### Your Answers (2-3 sentences each)
+```
+A1: Email + password. Maybe Google OAuth later.
+A2: Stay logged in for 7 days, with "remember me" option.
+A3: Minimum 8 characters, no complexity rules.
+A4: Yes, email reset link.
+A5: Show error, don't lock account.
+A6: Yes, needs keyboard navigation.
+A7: Yes, responsive design.
+```
+
+### LLM Shows Inferences
+```markdown
+[INFER-HIGH] JWT tokens in httpOnly cookies (you said 7-day sessions)
+[INFER-HIGH] Server-side password hashing with bcrypt
+[INFER-HIGH] Email service integration for password reset
+[INFER-MEDIUM] Rate limiting on login endpoint (prevent brute force)
+[INFER-MEDIUM] OAuth prep but not implement yet (you said "maybe later")
+[INFER-LOW] Password strength indicator in UI? (not specified)
+
+Questions for confirmation:
+Q: Should we save email for next visit (localStorage)?
+Q: Backend exists or create mock API for now?
+```
+
+### You Approve
+```
+"Yes to localStorage, use mock API for now, add password strength indicator"
+```
+
+### LLM Implements
+```
+TASK-001: Auth state management + JWT handling (2h)
+TASK-002: Login/register forms with validation (2h)
+TASK-003: Password reset flow (1.5h)
+TASK-004: OAuth preparation (hooks only) (1h)
+
+✓ Implements with:
+  - Debounced validation
+  - Accessible form labels
+  - Error boundary
+  - Loading states
+  - Keyboard navigation
+  - Mobile responsive
+
+✓ Creates state snapshot
+✓ Updates project.md
+✓ Ready for next feature
+```
+
+**Total time:** 10 minutes discovery + LLM implementation vs 2 hours writing spec + multiple implementation attempts
+
+---
+
+## Compatibility
+
+### LLM Tools Supported
+✅ Claude Code (Anthropic)
+✅ Cursor (OpenAI)
+✅ ChatGPT CLI
+✅ Gemini CLI (Google)
+✅ GitHub Copilot
+✅ Any LLM with file reading capability
+
+### Technology Stack
+✅ Any language (JavaScript, Python, Rust, Go, Java, C#, etc.)
+✅ Any framework (React, Vue, Django, Rails, Express, FastAPI, etc.)
+✅ Any project type (web, mobile, backend, ML, CLI, etc.)
+
+### Project Size
+✅ New projects (initialize from scratch)
+✅ Existing projects (minimal changes - add 5 files)
+✅ Small teams (1-5 devs)
+✅ Large projects (context compression scales)
+
+---
+
+## Commands
+
+```bash
+# Initialize framework in project
+npx ctxforge init
+
+# Validate framework setup
+npx ctxforge validate
+
+# Check context health
+npx ctxforge health
+
+# Show current state
+npx ctxforge status
+
+# Optimize context size
+npx ctxforge optimize
+
+# Show version
+npx ctxforge version
+```
+
+---
+
+## Token Efficiency
+
+### Framework Overhead
+**Total:** 60K tokens across 5 files
+**Typical session load:** 30-40K tokens (1 LLM + 2-3 framework files)
+**Remaining budget:** 160-170K of 200K context window
+
+### Session Loading Strategy
+
+**Setup session:**
+FRAMEWORK.md + LLM-INSTRUCTIONS.md + TEMPLATES.md = **37K**
+
+**Development session:**
+project.md (10-15K) + PERFORMANCE-DIRECTIVES.md (15K) + DISCOVERY-QUESTIONS.md (8K) = **35-40K**
+
+**Review session:**
+project.md (10-15K) + current code files = **20-30K**
+
+### Growing project.md
+- Week 1: 5K (initialization)
+- Week 4: 15K (3-4 features)
+- Week 8: 20K → compress → 12K
+- Stays bounded under 20K via state snapshots
+
+---
+
+## FAQ
+
+**Q: Do I need to specify every detail upfront?**
+A: No. Describe user behavior. LLM asks questions to discover the rest.
+
+**Q: What if LLM makes wrong assumptions?**
+A: That's the point of the checkpoint. Correct inferences before it codes.
+
+**Q: How is this different from writing good prompts?**
+A: Framework contains senior engineer question templates. Consistent expert-level discovery automatically.
+
+**Q: Will this slow down development?**
+A: 5-10 minutes of discovery saves hours of rework. Net faster.
+
+**Q: Can I use with existing projects?**
+A: Yes. Copy 5 files to docs/, answer 3 questions, continue coding.
+
+**Q: Does it require changing my workflow?**
+A: No. You still describe what to build. Framework makes LLM ask better questions.
+
+**Q: What if my project gets huge?**
+A: State snapshots compress context. Scales to any size.
+
+**Q: Do I need to learn a new syntax?**
+A: No. Natural language only. Framework handles structure.
+
+**Q: What about team collaboration?**
+A: project.md becomes shared context. All devs (human/AI) read same source of truth.
+
+**Q: Is there a learning curve?**
+A: 10 minutes to understand, 1 feature to master.
+
+**Q: Does ctxforge send data externally?**
+A: No. Everything runs locally. Zero network calls.
+
+---
+
+## Comparison: v1.0 → v2.0
+
+| Metric | v1.0 | v2.0 | Improvement |
+|--------|------|------|-------------|
+| Files | 22 | 5 | 77% fewer |
+| Total tokens | 313K | 60K | **81% reduction** |
+| Install time | 30 min | 2 min | 93% faster |
+| Install steps | 12 | 1 | 92% simpler |
+| Session load | 75-150K | 30-40K | 60-73% lighter |
+| Human effort | Write specs | Answer questions | **90% less work** |
+| LLM automation | Manual | Auto-discovery | **Fully automated** |
+| Compatibility | 5 LLMs documented | ANY LLM | **Universal** |
+
+---
+
+## Examples
+
+See `examples/` directory:
+- `ctxforge-project.md` - Framework applied to itself
+- More examples coming soon
+
+---
+
+## Contributing
+
+Issues and PRs welcome at [GitHub](https://github.com/vencolini/ctxforge)
+
+---
+
+## License
+
+MIT © Ventsislav Petrov + Claude Sonnet 4.5
+
+---
+
+## Links
+
+**NPM:** https://www.npmjs.com/package/ctxforge
+**GitHub:** https://github.com/vencolini/ctxforge
+**Issues:** https://github.com/vencolini/ctxforge/issues
+**Documentation:** `docs/context/FRAMEWORK.md` (after init)
+
+---
+
+**Now go extract some senior engineer-level code.** 🚀

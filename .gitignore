@@ -1,28 +1,40 @@
-# Personal files (not part of distribution)
-action-plan.md
-testing-guide.md
-test-validation.md
-ENHANCED-TESTING-REPORT.md
-docs/framework-improvement-proposal.md
+# Dependencies
+node_modules/
 
-# Development artifacts (created during framework development)
-docs/context/behavioral-specs/
-docs/context/state-snapshots/
-enhanced-testing/
-temp-testing/
+# Build artifacts
+*.tgz
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# LLM integration files (created by init, not distributed)
-CLAUDE.md
-AGENTS.md
-GEMINI.md
-CODEX.md
-CONTEXT.md
+# Testing
+coverage/
+.nyc_output/
 
 # OS files
 .DS_Store
 Thumbs.db
 
-# Editor
+# Editor/IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 .history/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Temporary/backup
+*.tmp
+*.log
+*-backup-*
+test-install/
+ctxforge-v1-archive/
+
+# Development artifacts (if you create these in future)
+CLEANUP_*.md
+*-COMPLETE.md
+SESSION_*.md

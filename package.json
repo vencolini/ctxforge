@@ -1,13 +1,13 @@
 {
   "name": "ctxforge",
-  "version": "1.2.1",
-  "description": "Context Engineering Framework for LLM-Assisted Development with Analytics, Git Integration, and IDE Support",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "Ultra-lightweight context discovery framework for LLM-assisted development. Extract senior engineer-level code through systematic questioning. 5 files, 60K tokens, zero config.",
   "bin": {
     "ctxforge": "bin/ctxforge.js"
   },
   "scripts": {
-    "test": "node bin/ctxforge.js init --test"
+    "test": "node --test tests/**/*.test.js",
+    "test:watch": "node --test --watch tests/**/*.test.js"
   },
   "keywords": [
     "llm",
@@ -19,13 +19,18 @@
     "development",
     "framework",
     "context-engineering",
+    "context-discovery",
     "ai-assisted-coding",
-    "analytics",
-    "git-hooks",
-    "ide-integration",
+    "senior-engineer",
+    "code-quality",
+    "behavioral-spec",
+    "automated-qa",
+    "zero-config",
+    "lightweight",
+    "universal",
     "vscode",
     "cursor",
-    "code-quality"
+    "copilot"
   ],
   "author": "Ventsislav Petrov + Claude Sonnet 4.5",
   "license": "MIT",
@@ -42,10 +47,13 @@
   },
   "files": [
     "bin/",
-    "docs/",
-    "templates/",
+    "lib/",
+    "examples/ctxforge-project.md",
     "README.md",
     "CHANGELOG.md",
     "LICENSE"
-  ]
+  ],
+  "dependencies": {
+    "claude": "^0.1.1"
+  }
 }
