@@ -1,7 +1,7 @@
 {
   "name": "ctxforge",
-  "version": "2.0.0",
-  "description": "Ultra-lightweight context discovery framework for LLM-assisted development. Extract senior engineer-level code through systematic questioning. 5 files, 60K tokens, zero config.",
+  "version": "3.0.0",
+  "description": "Revolutionary protocol auto-loading system for LLM-assisted development. 60-70% token reduction with 15 specialized protocols. Load only what you need. Universal LLM compatibility.",
   "bin": {
     "ctxforge": "bin/ctxforge.js"
   },
@@ -32,7 +32,7 @@
     "cursor",
     "copilot"
   ],
-  "author": "Ventsislav Petrov + Claude Sonnet 4.5",
+  "author": "Ventsislav Petrov",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -48,6 +48,7 @@
   "files": [
     "bin/",
     "lib/",
+    "example-integrations/",
     "examples/ctxforge-project.md",
     "README.md",
     "CHANGELOG.md",
