@@ -2,7 +2,7 @@
 
 > Lightweight context discovery framework for LLM-assisted development
 
-[![npm version](https://badge.fury.io/js/ctxforge.svg)](https://www.npmjs.com/package/ctxforge)
+[![npm version](https://img.shields.io/npm/v/ctxforge.svg)](https://www.npmjs.com/package/ctxforge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ctxforge is an experimental framework that helps LLMs systematically discover project requirements through structured questioning. Instead of loading large instruction sets, it uses protocol auto-loading to load only the workflow needed for each task.
