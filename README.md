@@ -1,11 +1,31 @@
 # ctxforge
 
-> Lightweight context discovery framework for LLM-assisted development
+<p align="center">
+  <img src="images/image_ctxforge.png" alt="ctxforge" width="400"/>
+</p>
+
+> Lightweight context discovery and engineering framework for LLM-assisted development
 
 [![npm version](https://img.shields.io/npm/v/ctxforge.svg)](https://www.npmjs.com/package/ctxforge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ctxforge is an experimental framework that helps LLMs systematically discover project requirements through structured questioning. Instead of loading large instruction sets, it uses protocol auto-loading to load only the workflow needed for each task.
+
+## What Problem Does This Solve?
+
+Working with LLMs on coding projects often leads to:
+
+- **Context Overload**: Loading massive instruction sets (25K+ tokens) that leave little room for your actual code
+- **Premature Implementation**: LLMs jumping to code before understanding requirements
+- **Missing Edge Cases**: Features built without discovering critical constraints or error scenarios
+- **Repeated Mistakes**: No systematic way to capture and apply project-specific learnings
+- **Inconsistent Quality**: No automatic enforcement of performance, security, and accessibility standards
+
+ctxforge addresses these through structured context discovery and protocol-based workflows, inspired by how senior engineers approach problem-solving through systematic questioning.
+
+## Inspiration
+
+This framework is inspired by [Andrej Karpathy's insights on Human-LLM interaction](https://www.youtube.com/watch?v=LCEmiRjPEtQ&t=1102s), particularly the importance of structured communication patterns between humans and AI systems. Rather than treating LLMs as magic black boxes, ctxforge creates a systematic discovery process that extracts better requirements and produces higher-quality code.
 
 **Current version:** v3.0 introduces protocol auto-loading (8-10K tokens per session vs 25K in v2.1)
 
