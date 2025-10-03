@@ -33,13 +33,32 @@ This framework is inspired by [Andrej Karpathy's insights on Human-LLM interacti
 
 ## Quick Start
 
-### Install
+### Option 1: NPM Install (Node.js projects)
 
 ```bash
 npx ctxforge init
 ```
 
 This creates a `docs/context/` directory with framework files.
+
+### Option 2: Direct Download (Universal - any language/IDE)
+
+**For developers without Node.js or working in Python, Java, Go, Rust, etc.:**
+
+```bash
+# Clone the framework files directly
+curl -L https://github.com/vencolini/ctxforge/archive/refs/heads/main.zip -o ctxforge.zip
+unzip ctxforge.zip
+cp -r ctxforge-main/lib/framework docs/context
+rm -rf ctxforge.zip ctxforge-main
+```
+
+Or manually:
+1. Download the [latest release](https://github.com/vencolini/ctxforge/releases)
+2. Extract the `lib/framework/` folder
+3. Copy it to your project as `docs/context/`
+
+**Works with any project in any language** - Python, Java, Go, Rust, PHP, Ruby, C++, etc.
 
 ### Use with Your LLM
 
