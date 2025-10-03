@@ -1,7 +1,7 @@
 {
   "name": "ctxforge",
-  "version": "3.0.2",
-  "description": "Lightweight context discovery framework for LLM-assisted development. Systematic requirement discovery through protocol auto-loading.",
+  "version": "3.0.3",
+  "description": "Lightweight context discovery  and engineering framework for LLM-assisted development.",
   "bin": {
     "ctxforge": "bin/ctxforge.js"
   },
