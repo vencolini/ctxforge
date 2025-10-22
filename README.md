@@ -27,7 +27,7 @@ ctxforge addresses these through structured context discovery and protocol-based
 
 This framework is inspired by [Andrej Karpathy's insights on Human-LLM interaction](https://www.youtube.com/watch?v=LCEmiRjPEtQ&t=1102s), particularly the importance of structured communication patterns between humans and AI systems. Rather than treating LLMs as magic black boxes, ctxforge creates a systematic discovery process that extracts better requirements and produces higher-quality code.
 
-**Current version:** v3.0 introduces protocol auto-loading (8-10K tokens per session vs 25K in v2.1)
+**Current version:** v3.0 introduces protocol auto-loading (4-9K tokens per session vs 25K in v2.1)
 
 ---
 
@@ -127,12 +127,12 @@ LLM: [Implements authentication system with corrected timeout]
 
 ## How It Works
 
-ctxforge installs 21 markdown files in your project. When you start a session:
+ctxforge installs 20 markdown files in your project. When you start a session:
 
-1. Your LLM reads `CORE.md` (5K tokens)
+1. Your LLM reads `CORE.md` (~2.7K tokens)
 2. You describe what you want to work on
 3. CORE.md contains an intent detection table
-4. LLM loads the appropriate protocol (3-5K tokens)
+4. LLM loads the appropriate protocol (1-6K tokens)
 5. Protocol guides LLM through discovery → implementation → documentation
 
 **Protocols available:**
@@ -174,9 +174,9 @@ docs/context/
     └── ... (12 more)
 ```
 
-**Total:** 21 files
+**Total:** 20 files (6 core + 15 protocols - removed v2.0 legacy)
 **Loaded per session:** Usually 2-3 files (CORE.md + 1 protocol + project.md)
-**Token usage:** ~8-10K tokens for framework, leaving ~190K for your code (assuming 200K context window)
+**Token usage:** ~4-9K tokens for framework (avg 6K), leaving ~190K for your code (assuming 200K context window)
 
 ---
 
@@ -223,7 +223,7 @@ npx ctxforge version    # Show version
 
 **Traditional approach:** Load all instructions every session (25K+ tokens)
 
-**ctxforge v3.0:** Load core + one protocol as needed (8-10K tokens)
+**ctxforge v3.0:** Load core + one protocol as needed (4-9K tokens, avg 6K)
 
 **Benefits:**
 - More room for your actual code in context window
@@ -245,7 +245,7 @@ This is an experimental approach. Feedback welcome.
 | Approach | Framework | Your Code | Total |
 |----------|-----------|-----------|-------|
 | Traditional | 25K | 100K | 125K |
-| ctxforge v3.0 | 9K | 150K | 159K |
+| ctxforge v3.0 | 6K | 150K | 156K |
 
 (Assuming 200K context window for comparison)
 
@@ -327,13 +327,13 @@ MIT © Ventsislav Petrov
 
 The protocol auto-loading system works through a three-tier architecture:
 
-**Tier 1: CORE.md** (5K tokens)
+**Tier 1: CORE.md** (~2.7K tokens)
 - Entry point for all sessions
 - Contains intent detection table mapping keywords to protocols
 - Lightweight coordination layer
 - Always loaded first
 
-**Tier 2: Protocols** (3-5K tokens each)
+**Tier 2: Protocols** (1-6K tokens each, avg 3.3K)
 - 15 specialized workflow files
 - Each protocol is self-contained
 - Includes discovery questions, templates, and quality criteria
@@ -442,13 +442,13 @@ All in one session. Each protocol loads only when needed.
 **Typical session breakdown:**
 
 ```
-CORE.md:                    5,000 tokens
-Protocol (e.g. BUG-FIXING): 4,000 tokens
+CORE.md:                    2,700 tokens
+Protocol (e.g. BUG-FIXING): 1,400 tokens
 project.md:                 8,000 tokens
-Performance directives:     3,000 tokens (if needed)
+Performance directives:     2,600 tokens (if needed)
 ─────────────────────────────────────────
-Framework total:           20,000 tokens
-Your code context:        180,000 tokens
+Framework total:           14,700 tokens
+Your code context:        185,000 tokens
 ═════════════════════════════════════════
 Total (200K window):      200,000 tokens
 ```
@@ -523,9 +523,10 @@ Example custom protocol ideas:
 **v3.0** (Current)
 - Protocol auto-loading system
 - 15 specialized protocols
-- 60-70% token reduction
+- 70-80% token reduction from v2.0
 - Multi-protocol sessions
 - Unlimited scalability
+- Removed legacy v2.0 file (LLM-INSTRUCTIONS.md)
 
 **v2.1**
 - Added 5 new workflows (bug fixing, refactoring, code review, testing, investigation)
