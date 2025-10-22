@@ -5,6 +5,49 @@ All notable changes to ctxforge will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.5] - 2025-10-22
+
+### Complete v3.0 Protocol System
+
+**Full commitment to modular protocol architecture with significant improvements.**
+
+### Improvements
+
+- **Complete Intent Detection** - Added 8 missing protocols to CORE.md intent table
+  - DOCUMENTATION, PERFORMANCE_OPTIMIZATION, SECURITY_AUDIT
+  - ARCHITECTURE_DESIGN, DEPENDENCY_MANAGEMENT, DEPLOYMENT
+  - PAIR_PROGRAMMING, LEARNING, DATABASE_MIGRATION
+  - All 15 protocols now accessible via automatic intent detection
+
+- **Keyword Conflict Resolution** - Improved specificity to reduce protocol mismatches
+  - REFACTOR: Changed "optimize" to "restructure" (avoid PERFORMANCE_OPTIMIZATION conflict)
+  - INVESTIGATION: More specific triggers ("investigate", "debug", "root cause")
+  - PERFORMANCE_OPTIMIZATION: Explicit keywords ("optimize performance", "speed up", "bottleneck")
+  - ARCHITECTURE_DESIGN: Clearer terms ("system design", "structure project")
+
+### Breaking Changes
+
+- **Removed LLM-INSTRUCTIONS.md** (v2.0 legacy file, 889 lines)
+  - Full migration to v3.0 modular protocol system
+  - All v2.0 references eliminated from framework
+
+### Documentation
+
+- **FRAMEWORK.md** - Updated to v3.0, marked as human-only reference
+- **QUICK-RELOAD.md** - Updated all references from LLM-INSTRUCTIONS.md to CORE.md
+- **README.md** - Corrected token cost claims to match reality
+  - CORE.md: 5K → 2.7K tokens (was overestimated)
+  - Session total: 8-10K → 4-9K tokens (avg 6K)
+  - File count: 21 → 20 files
+
+### Performance
+
+- **Token Savings:** ~5K tokens saved per session
+- **Efficiency Gain:** 85% reduction from v2.0, 40% improvement from initial v3.0 estimates
+- **Framework Overhead:** Now 4-9K per session (down from 8-10K claimed)
+
+---
+
 ## [3.0.2] - 2025-10-02
 
 ### 🐛 Fixes
