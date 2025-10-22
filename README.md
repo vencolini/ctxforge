@@ -180,7 +180,8 @@ docs/context/
 │   ├── DEPENDENCY-MANAGEMENT.md
 │   ├── PAIR-PROGRAMMING.md
 │   ├── LEARNING.md
-│   └── DATABASE-MIGRATION.md
+│   ├── DATABASE-MIGRATION.md
+│   └── LANDING-PAGE-DESIGN.md
 ├── PERFORMANCE-DIRECTIVES.md  # Quality standards (2.6K tokens)
 ├── DISCOVERY-QUESTIONS.md     # Question templates
 ├── TEMPLATES.md               # Document structures
@@ -361,7 +362,7 @@ docs/context/
 
 ## Available Protocols
 
-ctxforge includes 15 specialized workflows, each optimized for specific task types:
+ctxforge includes 16 specialized workflows, each optimized for specific task types:
 
 | Protocol | Use Case | Key Discovery Questions | Quality Enforcements |
 |----------|----------|------------------------|---------------------|
@@ -380,6 +381,7 @@ ctxforge includes 15 specialized workflows, each optimized for specific task typ
 | **PAIR-PROGRAMMING** | Collaborative work | Learning goals, experience level, preferred style | Interactive explanation, knowledge transfer |
 | **LEARNING** | Skill development | Current knowledge, learning style, practice needs | Concept explanation, practice exercises, examples |
 | **DATABASE-MIGRATION** | Schema changes | Migration type, data volume, rollback needs, downtime tolerance | Data integrity checks, rollback script, performance impact |
+| **LANDING-PAGE-DESIGN** | Conversion-focused marketing pages | Business goals, target audience, value proposition, trust signals | Conversion psychology, performance <2.5s, mobile optimization, A/B testing ready |
 
 ### Protocol Auto-Loading
 
@@ -395,6 +397,7 @@ The LLM automatically detects intent and loads the appropriate protocol based on
 | "Explain how the payment flow works" | INVESTIGATION | INVESTIGATION |
 | "Update dependencies to latest versions" | DEPENDENCY | DEPENDENCY-MANAGEMENT |
 | "Deploy to production" | DEPLOYMENT | DEPLOYMENT |
+| "Create landing page for product launch" | LANDING_PAGE_DESIGN | LANDING-PAGE-DESIGN |
 
 **Intent detection accuracy:** ~95% in testing
 

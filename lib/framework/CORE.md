@@ -99,6 +99,7 @@ Classify request into ONE of these intents:
 | `PAIR_PROGRAMMING` | pair, pair with me, collaborate, work together, help me code | "Let's pair on this" |
 | `LEARNING` | teach, learn, explain concept, tutorial, how does, study | "Teach me React hooks" |
 | `DATABASE_MIGRATION` | migrate database, migration, schema change, database change | "Migrate to PostgreSQL" |
+| `LANDING_PAGE_DESIGN` | landing page, sales page, marketing page, conversion page, campaign page, promotional page, product page | "Create landing page for SaaS trial" |
 | `INITIALIZATION` | initialize, init, setup project, start new project | "Initialize project" |
 
 **Step 2: Confirm Intent (Optional)**
@@ -141,6 +142,7 @@ I detect you want to [intent]. Is that correct?
 | PAIR_PROGRAMMING | protocols/PAIR-PROGRAMMING.md | ~3K |
 | LEARNING | protocols/LEARNING.md | ~3K |
 | DATABASE_MIGRATION | protocols/DATABASE-MIGRATION.md | ~4K |
+| LANDING_PAGE_DESIGN | protocols/LANDING-PAGE-DESIGN.md | ~5K |
 | INITIALIZATION | (built-in - see below) | ~2K |
 
 **Total session cost:** CORE.md (5K) + Protocol (~4K) + project.md (~5-10K) = **14-19K tokens**

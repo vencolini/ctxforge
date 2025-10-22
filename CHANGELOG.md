@@ -5,6 +5,93 @@ All notable changes to ctxforge will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.0] - 2025-10-22
+
+### ✨ New Protocol: Landing Page Design
+
+**Added comprehensive protocol for creating high-converting marketing landing pages.**
+
+### Added
+
+- **LANDING-PAGE-DESIGN.md Protocol** (~5K tokens, 1,133 lines)
+  - 7 expert-formulated discovery questions focused on conversion psychology
+  - Business goal & conversion action discovery
+  - Target audience pain point identification
+  - Unique value proposition extraction
+  - Trust signals & social proof requirements
+  - Objection handling discovery
+  - Traffic source & message matching
+  - Success metrics & constraints definition
+
+- **Industry-Specific Page Patterns**
+  - SaaS (free trial / demo focused)
+  - B2B Services (consultation booking focused)
+  - B2C E-commerce (purchase focused)
+  - Lead Generation (email capture focused)
+  - Each with proven structures and conversion benchmarks
+
+- **Copy Framework Library**
+  - PAS (Problem-Agitate-Solution) for pain-driven offers
+  - AIDA (Attention-Interest-Desire-Action) for educational content
+  - Value Proposition Canvas for competitive markets
+  - Feature→Benefit translation templates
+  - Framework-agnostic HTML structure examples
+
+- **Comprehensive Quality Standards**
+  - Conversion psychology checklist (8 criteria)
+  - Visual hierarchy optimization (8 criteria)
+  - Performance requirements (<2.5s LCP critical for conversion)
+  - Mobile optimization (thumb-reachable CTAs, readable fonts)
+  - Accessibility compliance (WCAG AA)
+  - SEO & discoverability best practices
+  - A/B testing readiness verification
+
+- **Industry Conversion Benchmarks**
+  - SaaS: 2-5% average, 10-15% top performers
+  - B2B Lead Generation: 5-10% average, 15-20% with strong offers
+  - B2C E-commerce: 2-3% average, varies by price point
+  - Webinar Registration: 20-40% average
+  - Lead Magnet Downloads: 25-50% average
+
+### Improvements
+
+- **Intent Detection** - Added `LANDING_PAGE_DESIGN` to CORE.md
+  - Keywords: "landing page", "sales page", "marketing page", "conversion page", "campaign page", "promotional page", "product page"
+  - Auto-loads protocol when user requests landing page creation
+
+- **Protocol Integration** - Seamless handoff to FEATURE-DEVELOPMENT
+  - After landing page structure approved, delegates technical implementation
+  - Framework-agnostic design specification
+  - Clear implementation handoff process
+
+### Documentation
+
+- **README.md** - Updated protocol count from 15 to 16
+  - Added LANDING-PAGE-DESIGN to Available Protocols table
+  - Added to Protocol Auto-Loading examples
+  - Updated Component Structure diagram
+
+- **CORE.md** - Updated intent detection and protocol mapping tables
+  - Line 102: Added LANDING_PAGE_DESIGN intent with keywords
+  - Line 145: Added protocol file mapping with ~5K token estimate
+
+### Use Cases
+
+Perfect for:
+- SaaS product launches and trial signup pages
+- B2B service provider marketing pages
+- E-commerce single-product promotional pages
+- Webinar and lead magnet registration pages
+- Campaign-specific conversion-optimized pages
+
+Trigger examples:
+- "Create landing page for SaaS trial"
+- "Design marketing page for product launch"
+- "Build conversion page for webinar registration"
+- "Optimize sales page for better conversion"
+
+---
+
 ## [3.0.5] - 2025-10-22
 
 ### Complete v3.0 Protocol System
