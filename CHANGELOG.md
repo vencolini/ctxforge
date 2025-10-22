@@ -5,6 +5,21 @@ All notable changes to ctxforge will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.1] - 2025-10-22
+
+### 🐛 Fixes
+
+- **init command** - Fixed missing LANDING-PAGE-DESIGN protocol installation
+  - Updated protocol list in init.js to include all 16 protocols
+  - Users running `npx ctxforge init` now correctly receive LANDING-PAGE-DESIGN.md
+  - Updated protocol count display: 15 → 16
+
+### Technical Details
+
+The init command had a hardcoded protocol array that wasn't updated for v3.1.0, causing the new LANDING-PAGE-DESIGN protocol to be excluded from installations despite being present in the npm package.
+
+---
+
 ## [3.1.0] - 2025-10-22
 
 ### ✨ New Protocol: Landing Page Design
