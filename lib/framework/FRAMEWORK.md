@@ -1,4 +1,8 @@
-# Context Discovery Framework v2.0
+# Context Discovery Framework v3.0
+
+**Human Reference Guide**
+
+> **Note:** This file is for human understanding only. LLMs should read `CORE.md` instead.
 
 **Get senior engineer-level code from any LLM through systematic context extraction.**
 
@@ -77,11 +81,11 @@ LLM: Implements + creates compressed state snapshot
 ### Step 1: Initialize (First time only)
 
 ```bash
-# Start LLM with framework
-claude-code docs/context/FRAMEWORK.md
+# Start LLM with framework (v3.0)
+claude-code docs/context/CORE.md
 
 # Or with any LLM
-"Read docs/context/LLM-INSTRUCTIONS.md and initialize my project"
+"Read docs/context/CORE.md and ask what I want to work on"
 ```
 
 LLM asks 3 questions:
@@ -126,12 +130,17 @@ After first session:
 ```
 your-project/
 ├── docs/context/
-│   ├── FRAMEWORK.md              (this file)
-│   ├── LLM-INSTRUCTIONS.md       (how LLM operates)
+│   ├── CORE.md                   (LLM entry point - v3.0)
+│   ├── FRAMEWORK.md              (this file - human reference)
 │   ├── PERFORMANCE-DIRECTIVES.md (quality rules)
 │   ├── DISCOVERY-QUESTIONS.md    (question templates)
 │   ├── TEMPLATES.md              (artifact structures)
-│   └── project.md                (✨ YOUR PROJECT CONTEXT)
+│   ├── QUICK-RELOAD.md           (recovery guide)
+│   ├── project.md                (✨ YOUR PROJECT CONTEXT)
+│   └── protocols/                (15 workflow protocols)
+│       ├── FEATURE-DEVELOPMENT.md
+│       ├── BUG-FIXING.md
+│       └── ... (13 more)
 └── src/
     └── [your code]
 ```
@@ -175,10 +184,16 @@ Quick reference and installation guide.
 **DISCOVERY-QUESTIONS.md**
 See what questions LLM will ask for common scenarios.
 
-### For LLMs
+**QUICK-RELOAD.md**
+Recovery guide when LLM loses framework context.
 
-**LLM-INSTRUCTIONS.md**
-Complete protocol for context discovery and task execution.
+### For LLMs (v3.0 Protocol Auto-Loading)
+
+**CORE.md**
+Entry point with intent detection and protocol loading system.
+
+**protocols/** (15 files)
+Specialized workflows loaded on-demand based on task intent.
 
 **PERFORMANCE-DIRECTIVES.md**
 30 auto-apply quality rules (Big O, accessibility, security, etc.).
@@ -196,16 +211,17 @@ Compressed state between tasks for very large projects.
 
 ---
 
-## Token Efficiency
+## Token Efficiency (v3.0)
 
-**Framework overhead:** 60K tokens total across 5 files
-**Typical session load:** 30-40K tokens
-**Your context budget remaining:** 160K+ tokens
+**Framework overhead:** ~21K tokens total across all files
+**Typical session load:** 4-9K tokens (average 6K)
+**Your context budget remaining:** 190K+ tokens
 
 **Why it's efficient:**
-- LLM loads 2-3 framework files per session (not all 5)
+- LLM loads CORE.md (2.7K) + one protocol (1-6K) only
+- 15 protocols available but only load what's needed
 - project.md stays compressed via state snapshots
-- No redundant documentation (framework auto-generates)
+- Can add unlimited protocols without increasing overhead
 
 ---
 
@@ -344,9 +360,9 @@ A: 10 minutes to understand, 1 feature to master.
 
 ## Version
 
-**Framework:** v2.0
-**Last Updated:** 2025-10-02
-**Token Budget:** 60K total (81% reduction from v1.0)
+**Framework:** v3.0
+**Last Updated:** 2025-10-22
+**Token Budget:** ~6K per session (70% reduction from v2.0)
 
 ---
 

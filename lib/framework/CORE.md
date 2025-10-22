@@ -86,11 +86,20 @@ Classify request into ONE of these intents:
 |--------|----------|----------|
 | `NEW_FEATURE` | build, create, add, implement, develop, make | "Add login", "Build search" |
 | `BUG_FIX` | fix, bug, error, broken, not working, issue | "Fix the crash", "Error in..." |
-| `REFACTOR` | refactor, improve, clean, reorganize, optimize | "Refactor auth code" |
+| `REFACTOR` | refactor, improve, clean, reorganize, restructure | "Refactor auth code" |
 | `CODE_REVIEW` | review, check, critique, assess, evaluate | "Review this code" |
 | `TESTING` | test, tests, testing, coverage, unit test | "Write tests for..." |
-| `INVESTIGATION` | why, how, explain, understand, what does | "Why is this slow?" |
-| `INITIALIZATION` | initialize, init, setup, start, new project | "Initialize project" |
+| `INVESTIGATION` | investigate, debug, why is, root cause, analyze | "Why is this slow?" |
+| `DOCUMENTATION` | document, write docs, readme, API docs, docstring | "Document this API" |
+| `PERFORMANCE_OPTIMIZATION` | optimize performance, speed up, slow, faster, latency, bottleneck | "Optimize this query" |
+| `SECURITY_AUDIT` | security, vulnerability, exploit, audit, secure | "Audit this endpoint" |
+| `ARCHITECTURE_DESIGN` | architecture, system design, design system, structure project | "Design microservices" |
+| `DEPENDENCY_MANAGEMENT` | dependency, dependencies, package, upgrade, update libs, version | "Update dependencies" |
+| `DEPLOYMENT` | deploy, deployment, release, production, ship, publish | "Deploy to AWS" |
+| `PAIR_PROGRAMMING` | pair, pair with me, collaborate, work together, help me code | "Let's pair on this" |
+| `LEARNING` | teach, learn, explain concept, tutorial, how does, study | "Teach me React hooks" |
+| `DATABASE_MIGRATION` | migrate database, migration, schema change, database change | "Migrate to PostgreSQL" |
+| `INITIALIZATION` | initialize, init, setup project, start new project | "Initialize project" |
 
 **Step 2: Confirm Intent (Optional)**
 
@@ -123,6 +132,15 @@ I detect you want to [intent]. Is that correct?
 | CODE_REVIEW | protocols/CODE-REVIEW.md | ~4K |
 | TESTING | protocols/TESTING.md | ~4K |
 | INVESTIGATION | protocols/INVESTIGATION.md | ~3K |
+| DOCUMENTATION | protocols/DOCUMENTATION.md | ~3K |
+| PERFORMANCE_OPTIMIZATION | protocols/PERFORMANCE-OPTIMIZATION.md | ~4K |
+| SECURITY_AUDIT | protocols/SECURITY-AUDIT.md | ~4K |
+| ARCHITECTURE_DESIGN | protocols/ARCHITECTURE-DESIGN.md | ~4K |
+| DEPENDENCY_MANAGEMENT | protocols/DEPENDENCY-MANAGEMENT.md | ~3K |
+| DEPLOYMENT | protocols/DEPLOYMENT.md | ~4K |
+| PAIR_PROGRAMMING | protocols/PAIR-PROGRAMMING.md | ~3K |
+| LEARNING | protocols/LEARNING.md | ~3K |
+| DATABASE_MIGRATION | protocols/DATABASE-MIGRATION.md | ~4K |
 | INITIALIZATION | (built-in - see below) | ~2K |
 
 **Total session cost:** CORE.md (5K) + Protocol (~4K) + project.md (~5-10K) = **14-19K tokens**
