@@ -275,6 +275,12 @@ docs/context/
 
 ### Recommended Use Cases
 
+✅ **Rapid prototyping/experimentation**
+- Speed prioritized over systematic approach
+- Throwaway code with no quality requirements
+- Exploring multiple approaches quickly
+- Example: Hackathons, proof-of-concept demos, A/B testing ideas, creating MVPs
+
 ✅ **Multi-step feature development**
 - Requirements need discovery before implementation
 - Edge cases must be identified upfront
@@ -319,44 +325,10 @@ docs/context/
 - Implementation is straightforward
 - Example: "Change button color to blue", "Fix typo in error message"
 
-❌ **Rapid prototyping/experimentation**
-- Speed prioritized over systematic approach
-- Throwaway code with no quality requirements
-- Exploring multiple approaches quickly
-- Example: Hackathons, proof-of-concept demos, A/B testing ideas
-
-❌ **Existing robust workflow**
-- You already provide comprehensive context consistently
-- Your current process handles edge cases effectively
-- No iteration waste observed in your workflow
-- Example: Developers with extensive AI prompting experience
-
 ❌ **Extremely limited context windows**
 - LLM has <50K context window
 - Framework overhead becomes significant
-- Trade-off doesn't justify the cost
 - Example: Older or smaller models with limited capacity
-
-### Decision Framework
-
-**Consider ctxforge if you answer "yes" to 2 or more:**
-
-- [ ] LLM frequently generates solutions that don't match your setup
-- [ ] You spend significant time iterating to correct wrong assumptions
-- [ ] You want standardized quality enforcement (security, performance, accessibility)
-- [ ] You forget to specify requirements and discover issues later
-- [ ] Multiple team members need consistent AI interaction patterns
-- [ ] You're onboarding developers to AI-assisted development
-- [ ] You want to prevent repeated mistakes through learning documentation
-
-**Skip ctxforge if you answer "yes" to 3 or more:**
-
-- [ ] Your tasks are primarily simple, one-step operations
-- [ ] You already provide complete context without forgetting details
-- [ ] You prefer minimal prompting and manual iteration
-- [ ] You're working with extremely limited context windows
-- [ ] You're doing throwaway prototyping with no quality requirements
-- [ ] Framework overhead feels heavier than iteration cost in your workflow
 
 ---
 
