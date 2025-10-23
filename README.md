@@ -156,6 +156,95 @@ Result: Worked on first deployment, no iteration needed
 
 ---
 
+## Inspiration & Research
+
+This framework is inspired by [Andrej Karpathy's insights on Human-LLM interaction](https://www.youtube.com/watch?v=LCEmiRjPEtQ&t=1102s), particularly the importance of structured communication patterns between humans and AI systems.
+
+**Core insight:** Rather than treating LLMs as magic black boxes that should "just understand" what we want, we can create systematic discovery processes that extract better requirements and produce higher-quality outputs.
+
+**Research foundations:**
+- Context engineering for LLMs
+- Systematic requirements discovery
+- Token efficiency optimization
+- Human-AI collaborative workflows
+
+**Influences:**
+- Software engineering interview techniques (asking clarifying questions before solving)
+- Behavior-driven development (specification by example)
+- Agile user stories (just enough detail, just in time)
+- Technical debt documentation (learning from mistakes)
+
+---
+
+## When to Use ctxforge
+
+<details>
+<summary><b>Recommended Use Cases</b></summary>
+
+### Recommended Use Cases
+
+✅ **Rapid prototyping/experimentation**
+- Speed prioritized over systematic approach
+- Throwaway code with no quality requirements
+- Exploring multiple approaches quickly
+- Example: Hackathons, proof-of-concept demos, A/B testing ideas, creating MVPs
+
+✅ **Multi-step feature development**
+- Requirements need discovery before implementation
+- Edge cases must be identified upfront
+- Quality standards must be enforced consistently
+- Example: User authentication, payment processing, search functionality
+
+✅ **Complex debugging scenarios**
+- Root cause requires systematic diagnosis
+- Multiple potential failure points exist
+- Reproduction steps need documentation
+- Example: Intermittent crashes, performance degradation, race conditions
+
+✅ **Performance optimization**
+- Bottleneck identification required before changes
+- Trade-offs must be explicitly evaluated
+- Measurements needed to validate improvements
+- Example: Slow database queries, high memory usage, API latency
+
+✅ **Code review and security audits**
+- Systematic evaluation against standards needed
+- Compliance requirements must be checked
+- Best practices must be enforced consistently
+- Example: Security review, accessibility compliance, code quality assessment
+
+✅ **Team collaboration**
+- Standardizing how developers interact with LLMs
+- Onboarding developers to AI-assisted workflows
+- Ensuring consistent quality across team
+- Example: Establishing team standards, training new developers
+
+✅ **Documentation and architecture**
+- Comprehensive documentation needed
+- System design requires structured thinking
+- Technical decisions must be documented with reasoning
+- Example: API documentation, architecture decision records
+
+### When ctxforge May Not Add Value
+
+❌ **Simple, well-defined tasks**
+- Requirements are complete and unambiguous
+- No discovery phase needed
+- Implementation is straightforward
+- Example: "Change button color to blue", "Fix typo in error message"
+
+❌ **Extremely limited context windows**
+- LLM has <50K context window
+- Framework overhead becomes significant
+- Example: Older or smaller models with limited capacity
+
+</details>
+
+---
+
+<details>
+<summary><b>Architecture</b></summary>
+
 ## Architecture
 
 ctxforge uses protocol auto-loading to minimize context overhead while providing structured workflows.
@@ -269,68 +358,12 @@ docs/context/
 
 **Break-even:** Framework pays for itself by preventing **one incorrect assumption** per session.
 
----
-
-## When to Use ctxforge
-
-### Recommended Use Cases
-
-✅ **Rapid prototyping/experimentation**
-- Speed prioritized over systematic approach
-- Throwaway code with no quality requirements
-- Exploring multiple approaches quickly
-- Example: Hackathons, proof-of-concept demos, A/B testing ideas, creating MVPs
-
-✅ **Multi-step feature development**
-- Requirements need discovery before implementation
-- Edge cases must be identified upfront
-- Quality standards must be enforced consistently
-- Example: User authentication, payment processing, search functionality
-
-✅ **Complex debugging scenarios**
-- Root cause requires systematic diagnosis
-- Multiple potential failure points exist
-- Reproduction steps need documentation
-- Example: Intermittent crashes, performance degradation, race conditions
-
-✅ **Performance optimization**
-- Bottleneck identification required before changes
-- Trade-offs must be explicitly evaluated
-- Measurements needed to validate improvements
-- Example: Slow database queries, high memory usage, API latency
-
-✅ **Code review and security audits**
-- Systematic evaluation against standards needed
-- Compliance requirements must be checked
-- Best practices must be enforced consistently
-- Example: Security review, accessibility compliance, code quality assessment
-
-✅ **Team collaboration**
-- Standardizing how developers interact with LLMs
-- Onboarding developers to AI-assisted workflows
-- Ensuring consistent quality across team
-- Example: Establishing team standards, training new developers
-
-✅ **Documentation and architecture**
-- Comprehensive documentation needed
-- System design requires structured thinking
-- Technical decisions must be documented with reasoning
-- Example: API documentation, architecture decision records
-
-### When ctxforge May Not Add Value
-
-❌ **Simple, well-defined tasks**
-- Requirements are complete and unambiguous
-- No discovery phase needed
-- Implementation is straightforward
-- Example: "Change button color to blue", "Fix typo in error message"
-
-❌ **Extremely limited context windows**
-- LLM has <50K context window
-- Framework overhead becomes significant
-- Example: Older or smaller models with limited capacity
+</details>
 
 ---
+
+<details>
+<summary><b>Available Protocols</b></summary>
 
 ## Available Protocols
 
@@ -401,7 +434,12 @@ LLM: [loads DEPLOYMENT, deploys]
 
 Each protocol loads only when needed, keeping context efficient.
 
+</details>
+
 ---
+
+<details>
+<summary><b>Integration with Existing Projects</b></summary>
 
 ## Integration with Existing Projects
 
@@ -469,7 +507,12 @@ Prefix requests with: "Following ctxforge protocols in docs/context/"
 
 See `example-integrations/` directory for detailed platform-specific guides.
 
+</details>
+
 ---
+
+<details>
+<summary><b>Frequently Asked Questions</b></summary>
 
 ## Frequently Asked Questions
 
@@ -716,7 +759,12 @@ Let's start fresh without the framework for the next task
 
 The goal is to reduce friction, not add it. If framework overhead exceeds iteration savings in your specific case, bypass it.
 
+</details>
+
 ---
+
+<details>
+<summary><b>CLI Commands</b></summary>
 
 ## CLI Commands
 
@@ -769,42 +817,28 @@ Recommendations:
   ✓ All protocols under 6K tokens
 ```
 
----
-
-## Inspiration & Research
-
-This framework is inspired by [Andrej Karpathy's insights on Human-LLM interaction](https://www.youtube.com/watch?v=LCEmiRjPEtQ&t=1102s), particularly the importance of structured communication patterns between humans and AI systems.
-
-**Core insight:** Rather than treating LLMs as magic black boxes that should "just understand" what we want, we can create systematic discovery processes that extract better requirements and produce higher-quality outputs.
-
-**Research foundations:**
-- Context engineering for LLMs
-- Systematic requirements discovery
-- Token efficiency optimization
-- Human-AI collaborative workflows
-
-**Influences:**
-- Software engineering interview techniques (asking clarifying questions before solving)
-- Behavior-driven development (specification by example)
-- Agile user stories (just enough detail, just in time)
-- Technical debt documentation (learning from mistakes)
+</details>
 
 ---
+
+<details>
+<summary><b>Documentation & Resources</b></summary>
 
 ## Documentation & Resources
 
-- **[Getting Started Guide](docs/getting-started.md)** - Complete setup and first usage walkthrough
-- **[Protocol Reference](docs/protocols.md)** - Detailed explanation of all 15 protocols
-- **[Customization Guide](docs/customization.md)** - How to extend and modify the framework
 - **[Integration Examples](example-integrations/)** - Platform-specific setup instructions
-- **[Best Practices](docs/best-practices.md)** - Tips for effective framework usage
 - **[Changelog](CHANGELOG.md)** - Version history and migration guides
+
+</details>
 
 ---
 
+<details>
+<summary><b>Contributing</b></summary>
+
 ## Contributing
 
-Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+Contributions are welcome!
 
 **Ways to contribute:**
 - Report bugs or issues
@@ -821,15 +855,23 @@ npm install
 npm test
 ```
 
+</details>
+
 ---
+
+<details>
+<summary><b>License</b></summary>
 
 ## License
 
 MIT © [Ventsislav Petrov](https://github.com/vencolini)
 
-See [LICENSE](LICENSE) file for details.
+</details>
 
 ---
+
+<details>
+<summary><b>Links</b></summary>
 
 ## Links
 
@@ -839,13 +881,20 @@ See [LICENSE](LICENSE) file for details.
 - **[Changelog](CHANGELOG.md)** - Version history
 - **[Releases](https://github.com/vencolini/ctxforge/releases)** - Download archives
 
+</details>
+
 ---
+
+<details>
+<summary><b>Acknowledgments</b></summary>
 
 ## Acknowledgments
 
 Thanks to everyone who provided feedback, suggestions, and real-world testing that shaped this framework.
 
 Special thanks to the AI research community for advancing the field and making tools like this possible.
+
+</details>
 
 ---
 
